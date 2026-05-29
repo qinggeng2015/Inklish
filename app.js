@@ -1,7 +1,7 @@
 const lessons = [
   {
     word: "Cat",
-    pronunciation: "/kat/",
+    pronunciation: "/kæt/",
     meaning: "小猫",
     theme: "Animal",
     sentence: "This is a cat.",
@@ -9,7 +9,7 @@ const lessons = [
   },
   {
     word: "Ball",
-    pronunciation: "/bawl/",
+    pronunciation: "/bɔːl/",
     meaning: "小球",
     theme: "Toy",
     sentence: "I see a ball.",
@@ -17,7 +17,7 @@ const lessons = [
   },
   {
     word: "Moon",
-    pronunciation: "/moon/",
+    pronunciation: "/muːn/",
     meaning: "月亮",
     theme: "Sky",
     sentence: "Look at the moon.",
@@ -61,7 +61,12 @@ const state = {
   index: 0,
 };
 
+const storageKey = "inklish-guide-seen";
+
 const elements = {
+  guide: document.querySelector("#guide"),
+  startButton: document.querySelector("#start-button"),
+  guideButton: document.querySelector("#guide-button"),
   counter: document.querySelector("#lesson-counter"),
   theme: document.querySelector("#lesson-theme"),
   picture: document.querySelector("#picture-frame"),
@@ -74,6 +79,42 @@ const elements = {
   doneButton: document.querySelector("#done-button"),
 };
 
+function hasSeenGuide() {
+  try {
+    return localStorage.getItem(storageKey) === "true";
+  } catch {
+    return false;
+  }
+}
+
+function markGuideSeen() {
+  try {
+    localStorage.setItem(storageKey, "true");
+  } catch {
+    // Some e-ink browsers disable storage; closing the guide should still work.
+  }
+}
+
+function openGuide() {
+  if (typeof elements.guide.showModal === "function") {
+    elements.guide.showModal();
+    return;
+  }
+
+  elements.guide.setAttribute("open", "");
+}
+
+function closeGuide() {
+  markGuideSeen();
+
+  if (typeof elements.guide.close === "function") {
+    elements.guide.close();
+    return;
+  }
+
+  elements.guide.removeAttribute("open");
+}
+
 function renderLesson() {
   const lesson = lessons[state.index];
   elements.counter.textContent = `${state.index + 1} / ${lessons.length}`;
@@ -84,6 +125,9 @@ function renderLesson() {
   elements.meaning.textContent = lesson.meaning;
   elements.parentCue.textContent = `家长慢读：${lesson.sentence}`;
 }
+
+elements.startButton.addEventListener("click", closeGuide);
+elements.guideButton.addEventListener("click", openGuide);
 
 elements.prevButton.addEventListener("click", () => {
   state.index = (state.index - 1 + lessons.length) % lessons.length;
@@ -100,3 +144,7 @@ elements.doneButton.addEventListener("click", () => {
 });
 
 renderLesson();
+
+if (!hasSeenGuide()) {
+  openGuide();
+}

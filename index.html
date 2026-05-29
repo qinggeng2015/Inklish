@@ -11,20 +11,46 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="app-shell" aria-labelledby="app-title">
-      <section class="hero panel">
+    <dialog class="guide panel" id="guide" aria-labelledby="guide-title">
+      <div class="guide-layout">
         <div>
           <p class="eyebrow">Inklish</p>
-          <h1 id="app-title">每天三个小英文</h1>
+          <h1 id="guide-title">每天三个小英文</h1>
           <p class="intro">
-            给 2-3 岁孩子的慢节奏英语启蒙：大图、大字、短声音、少干扰。
+            给 2-3 岁孩子的慢节奏英语启蒙：大图、大字、少干扰。
           </p>
         </div>
         <div class="daily-mark" aria-hidden="true">
           <span>3</span>
           <small>words</small>
         </div>
+      </div>
+
+      <section class="guide-steps" aria-labelledby="guide-steps-title">
+        <p class="eyebrow">For parents</p>
+        <h2 id="guide-steps-title">陪伴玩法</h2>
+        <ol class="parent-steps">
+          <li>家长先指图，让孩子观察轮廓和动作。</li>
+          <li>家长按页面提示慢慢读一句英文。</li>
+          <li>孩子愿意时，只模仿最后一个词即可。</li>
+        </ol>
       </section>
+
+      <button class="button primary guide-start" id="start-button" type="button">
+        开始学习
+      </button>
+    </dialog>
+
+    <main class="app-shell" aria-labelledby="app-title">
+      <header class="compact-header">
+        <div>
+          <p class="eyebrow">Inklish</p>
+          <h1 id="app-title">Today</h1>
+        </div>
+        <button class="text-button" id="guide-button" type="button">
+          玩法
+        </button>
+      </header>
 
       <section class="learning-card panel" aria-live="polite">
         <div class="card-topline">
@@ -37,7 +63,7 @@
         <div class="word-block">
           <p class="tiny-label">Look and point</p>
           <h2 id="word">Cat</h2>
-          <p id="pronunciation" class="pronunciation">/kat/</p>
+          <p id="pronunciation" class="pronunciation">/kæt/</p>
           <p id="meaning" class="meaning">小猫</p>
           <p id="parent-cue" class="parent-cue">家长慢读：This is a cat.</p>
         </div>
@@ -53,18 +79,6 @@
             今天完成
           </button>
         </div>
-      </section>
-
-      <section class="parent-panel panel" aria-labelledby="parent-title">
-        <div>
-          <p class="eyebrow">For parents</p>
-          <h2 id="parent-title">陪伴玩法</h2>
-        </div>
-        <ol class="parent-steps">
-          <li>家长先指图，让孩子观察轮廓和动作。</li>
-          <li>家长按页面提示慢慢读一句英文。</li>
-          <li>孩子愿意时，只模仿最后一个词即可。</li>
-        </ol>
       </section>
     </main>
 
