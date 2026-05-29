@@ -76,7 +76,6 @@ const elements = {
   parentCue: document.querySelector("#parent-cue"),
   prevButton: document.querySelector("#prev-button"),
   nextButton: document.querySelector("#next-button"),
-  doneButton: document.querySelector("#done-button"),
 };
 
 function hasSeenGuide() {
@@ -137,10 +136,6 @@ elements.prevButton.addEventListener("click", () => {
 elements.nextButton.addEventListener("click", () => {
   state.index = (state.index + 1) % lessons.length;
   renderLesson();
-});
-
-elements.doneButton.addEventListener("click", () => {
-  elements.doneButton.textContent = "明天再来";
 });
 
 renderLesson();

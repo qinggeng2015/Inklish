@@ -14,7 +14,9 @@
 }
 
 html {
+  height: 100%;
   min-height: 100%;
+  overflow: hidden;
   background:
     radial-gradient(circle at 14px 14px, rgba(17, 17, 17, 0.11) 1px, transparent 1px),
     linear-gradient(135deg, #f8f5ec 0%, #ebe5d5 100%);
@@ -22,8 +24,11 @@ html {
 }
 
 body {
+  height: 100vh;
+  height: 100dvh;
   min-height: 100%;
   margin: 0;
+  overflow: hidden;
   color: var(--ink);
   font-family: Georgia, "Songti SC", "Noto Serif CJK SC", serif;
   font-size: 18px;
@@ -35,9 +40,15 @@ button {
 }
 
 .app-shell {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: clamp(6px, 1.4vh, 12px);
   width: min(100%, 760px);
+  height: 100vh;
+  height: 100dvh;
   margin: 0 auto;
-  padding: 14px;
+  overflow: hidden;
+  padding: clamp(8px, 1.8vh, 14px);
 }
 
 .panel {
@@ -85,7 +96,6 @@ button {
 }
 
 .compact-header {
-  margin-bottom: 12px;
   padding: 0 4px;
 }
 
@@ -114,7 +124,7 @@ h1 {
 
 .compact-header h1 {
   margin-bottom: 0;
-  font-size: clamp(2rem, 8vw, 3rem);
+  font-size: clamp(1.8rem, 6vh, 3rem);
 }
 
 .intro {
@@ -153,6 +163,9 @@ h1 {
 }
 
 .learning-card {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  min-height: 0;
   overflow: hidden;
 }
 
@@ -161,16 +174,17 @@ h1 {
   justify-content: space-between;
   gap: 12px;
   border-bottom: 3px solid var(--line);
-  padding: 16px 20px;
+  padding: clamp(8px, 1.7vh, 14px) 18px;
   color: #34312c;
-  font-size: 1.05rem;
+  font-size: clamp(0.95rem, 2.2vh, 1.05rem);
   font-weight: 900;
   letter-spacing: 0.04em;
 }
 
 .picture-frame {
   display: grid;
-  min-height: clamp(210px, 37vh, 300px);
+  min-height: 0;
+  overflow: hidden;
   place-items: center;
   border-bottom: 3px solid var(--line);
   background:
@@ -179,8 +193,9 @@ h1 {
 }
 
 .picture-frame svg {
-  width: min(72vw, 330px);
-  max-height: clamp(190px, 33vh, 255px);
+  width: min(70vw, 310px);
+  max-height: 100%;
+  padding: clamp(8px, 1.8vh, 16px);
 }
 
 .picture-frame path,
@@ -193,50 +208,50 @@ h1 {
 }
 
 .word-block {
-  padding: 20px 22px 10px;
+  padding: clamp(8px, 1.8vh, 16px) 20px clamp(6px, 1.2vh, 10px);
   text-align: center;
 }
 
 .word-block h2 {
   margin-bottom: 2px;
-  font-size: clamp(3.7rem, 15vw, 7.2rem);
+  font-size: clamp(3rem, 11vh, 6.5rem);
   line-height: 0.9;
   letter-spacing: -0.08em;
 }
 
 .pronunciation {
-  margin-bottom: 4px;
+  margin-bottom: clamp(2px, 0.7vh, 4px);
   color: var(--soft);
-  font-size: clamp(1.2rem, 3.5vw, 1.7rem);
+  font-size: clamp(1.05rem, 3vh, 1.55rem);
   font-weight: 700;
 }
 
 .meaning {
   margin-bottom: 0;
-  font-size: clamp(1.35rem, 4.5vw, 2rem);
+  font-size: clamp(1.2rem, 3.8vh, 1.8rem);
   font-weight: 900;
 }
 
 .parent-cue {
   display: inline-block;
-  margin: 14px 0 0;
+  margin: clamp(8px, 1.5vh, 12px) 0 0;
   border: 3px solid var(--line);
   border-radius: 18px;
-  padding: 10px 14px;
+  padding: clamp(7px, 1.2vh, 10px) 14px;
   background: #faf7ee;
-  font-size: clamp(1rem, 2.8vw, 1.25rem);
+  font-size: clamp(0.95rem, 2.5vh, 1.2rem);
   font-weight: 900;
 }
 
 .actions {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 14px;
-  padding: 16px 20px 22px;
+  padding: clamp(10px, 1.8vh, 16px) 20px clamp(14px, 2.4vh, 22px);
 }
 
 .button {
-  min-height: 68px;
+  min-height: clamp(56px, 8vh, 72px);
   border: 3px solid var(--line);
   border-radius: 22px;
   background: #faf7ee;
@@ -301,7 +316,7 @@ h1 {
 
 @media (max-width: 560px) {
   .app-shell {
-    padding: 10px;
+    padding: 8px;
   }
 
   .guide {
@@ -325,18 +340,68 @@ h1 {
     font-size: 3rem;
   }
 
-  .picture-frame {
-    min-height: clamp(185px, 34vh, 245px);
-  }
-
   .actions {
     gap: 10px;
-    padding: 14px 14px 18px;
+    padding-right: 14px;
+    padding-left: 14px;
   }
 
   .button {
-    min-height: 60px;
     border-radius: 18px;
+  }
+}
+
+@media (max-height: 680px) {
+  .compact-header .eyebrow,
+  .tiny-label {
+    display: none;
+  }
+
+  .compact-header h1 {
+    font-size: 1.55rem;
+  }
+
+  .text-button {
+    min-height: 40px;
+  }
+
+  .word-block h2 {
+    font-size: clamp(2.6rem, 10vh, 5rem);
+  }
+
+  .parent-cue {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media (max-height: 560px) {
+  .app-shell {
+    padding: 6px;
+  }
+
+  .panel {
+    border-radius: 20px;
+  }
+
+  .card-topline {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
+  .word-block {
+    padding-top: 6px;
+  }
+
+  .actions {
+    padding-top: 8px;
+    padding-bottom: 10px;
+  }
+
+  .button {
+    min-height: 48px;
   }
 }
 
