@@ -171,7 +171,7 @@ h1 {
 
 .day-switcher {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: auto 1fr auto auto;
   align-items: center;
   gap: 10px;
   border-bottom: 3px solid var(--line);
@@ -191,6 +191,7 @@ h1 {
   align-items: center;
 }
 
+.day-arrow,
 .day-button {
   display: grid;
   min-width: clamp(42px, 8vw, 54px);
@@ -205,9 +206,20 @@ h1 {
   font-weight: 900;
 }
 
+.day-arrow {
+  font-size: clamp(1.7rem, 4.6vw, 2.2rem);
+}
+
 .day-button[aria-current="true"] {
   background: #1a1a1a;
   color: #fffdf6;
+}
+
+.day-arrow:disabled {
+  color: var(--soft);
+  border-style: dashed;
+  background: var(--paper-deep);
+  cursor: default;
 }
 
 .card-topline {
@@ -329,6 +341,7 @@ h1 {
 }
 
 .button:focus-visible,
+.day-arrow:focus-visible,
 .day-button:focus-visible,
 .text-button:focus-visible {
   outline: 5px double var(--line);
@@ -426,6 +439,7 @@ h1 {
     min-height: 40px;
   }
 
+  .day-arrow,
   .day-button {
     min-width: 36px;
     min-height: 36px;

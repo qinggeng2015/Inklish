@@ -188,6 +188,8 @@ const elements = {
   guideButton: document.querySelector("#guide-button"),
   title: document.querySelector("#app-title"),
   dayLabel: document.querySelector("#day-label"),
+  prevDayButton: document.querySelector("#prev-day-button"),
+  nextDayButton: document.querySelector("#next-day-button"),
   dayPicker: document.querySelector("#day-picker"),
   counter: document.querySelector("#lesson-counter"),
   theme: document.querySelector("#lesson-theme"),
@@ -252,9 +254,22 @@ function renderLesson() {
   elements.parentCue.textContent = `家长慢读：${lesson.sentence}`;
 }
 
+function getVisibleDayIndexes() {
+  const maxVisibleDays = 3;
+  const visibleCount = Math.min(maxVisibleDays, lessonDays.length);
+  const halfWindow = Math.floor(visibleCount / 2);
+  const maxStart = lessonDays.length - visibleCount;
+  const start = Math.min(Math.max(state.dayIndex - halfWindow, 0), maxStart);
+
+  return Array.from({ length: visibleCount }, (_, index) => start + index);
+}
+
 function renderDayPicker() {
-  elements.dayPicker.innerHTML = lessonDays
-    .map((day, index) => {
+  elements.prevDayButton.disabled = state.dayIndex === 0;
+  elements.nextDayButton.disabled = state.dayIndex === lessonDays.length - 1;
+  elements.dayPicker.innerHTML = getVisibleDayIndexes()
+    .map((index) => {
+      const day = lessonDays[index];
       const isCurrent = index === state.dayIndex;
       const marker = isCurrent ? "●" : "○";
 
@@ -284,6 +299,14 @@ elements.dayPicker.addEventListener("click", (event) => {
   }
 
   selectDay(Number(button.dataset.dayIndex));
+});
+
+elements.prevDayButton.addEventListener("click", () => {
+  selectDay(state.dayIndex - 1);
+});
+
+elements.nextDayButton.addEventListener("click", () => {
+  selectDay(state.dayIndex + 1);
 });
 
 elements.prevButton.addEventListener("click", () => {
