@@ -38,10 +38,10 @@ button {
 }
 
 .app-shell {
-  width: auto;
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 8px;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 10px;
 }
 
 .panel {
@@ -107,14 +107,14 @@ p {
 
 h1 {
   margin-bottom: 10px;
-  font-size: 42px;
+  font-size: 52px;
   line-height: 0.98;
   letter-spacing: -0.04em;
 }
 
 .compact-header h1 {
   margin-bottom: 0;
-  font-size: 34px;
+  font-size: 44px;
 }
 
 .intro {
@@ -231,7 +231,7 @@ h1 {
 }
 
 .picture-frame {
-  height: 220px;
+  height: 360px;
   overflow: hidden;
   border-bottom: 3px solid #1f1f1f;
   background: #ded8c8;
@@ -240,9 +240,9 @@ h1 {
 
 .picture-frame svg {
   display: block;
-  width: 280px;
+  width: 460px;
   max-width: 96%;
-  max-height: 210px;
+  max-height: 350px;
   margin: 0 auto;
   padding: 8px;
 }
@@ -257,13 +257,13 @@ h1 {
 }
 
 .word-block {
-  padding: 10px 16px 8px;
+  padding: 18px 18px 14px;
   text-align: center;
 }
 
 .word-block h2 {
   margin-bottom: 2px;
-  font-size: 64px;
+  font-size: 96px;
   line-height: 0.9;
   letter-spacing: -0.06em;
 }
@@ -271,37 +271,37 @@ h1 {
 .pronunciation {
   margin-bottom: 2px;
   color: #6c665b;
-  font-size: 1.25rem;
+  font-size: 1.7rem;
   font-weight: 700;
 }
 
 .meaning {
   margin-bottom: 0;
-  font-size: 1.4rem;
+  font-size: 1.9rem;
   font-weight: 900;
 }
 
 .parent-cue {
   display: inline-block;
   max-width: 100%;
-  margin: 8px 0 0;
+  margin: 14px 0 0;
   border: 3px solid #1f1f1f;
   border-radius: 16px;
-  padding: 7px 12px;
+  padding: 10px 16px;
   background: #faf7ee;
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: 900;
 }
 
 .actions {
-  padding: 8px 14px 14px;
+  padding: 14px 18px 18px;
   text-align: center;
 }
 
 .button {
   display: inline-block;
   width: 46%;
-  min-height: 56px;
+  min-height: 78px;
   margin: 0 1%;
   border: 3px solid #1f1f1f;
   border-radius: 18px;
@@ -309,7 +309,7 @@ h1 {
   color: #111;
   box-shadow: 4px 4px 0 #1a1a1a;
   cursor: pointer;
-  font-size: 1.35rem;
+  font-size: 1.8rem;
   font-weight: 900;
 }
 
@@ -330,7 +330,7 @@ h1 {
 }
 
 .symbol-button {
-  font-size: 2.2rem;
+  font-size: 3rem;
   line-height: 1;
 }
 
@@ -617,8 +617,47 @@ h1 {
     padding: 8px;
   }
 
+  h1 {
+    font-size: 42px;
+  }
+
+  .compact-header h1 {
+    font-size: 34px;
+  }
+
   .guide {
     padding: 20px;
+  }
+
+  .picture-frame {
+    height: 220px;
+  }
+
+  .picture-frame svg {
+    width: 280px;
+    max-height: 210px;
+  }
+
+  .word-block {
+    padding: 10px 16px 8px;
+  }
+
+  .word-block h2 {
+    font-size: 64px;
+  }
+
+  .pronunciation {
+    font-size: 1.25rem;
+  }
+
+  .meaning {
+    font-size: 1.4rem;
+  }
+
+  .parent-cue {
+    margin-top: 8px;
+    padding: 7px 12px;
+    font-size: 1rem;
   }
 
   .daily-mark {
@@ -631,8 +670,19 @@ h1 {
   }
 
   .actions {
+    padding-top: 8px;
+    padding-bottom: 14px;
     padding-right: 14px;
     padding-left: 14px;
+  }
+
+  .button {
+    min-height: 56px;
+    font-size: 1.35rem;
+  }
+
+  .symbol-button {
+    font-size: 2.2rem;
   }
 
   .day-switcher {
