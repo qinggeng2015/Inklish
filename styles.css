@@ -164,9 +164,43 @@ h1 {
 
 .learning-card {
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  grid-template-rows: auto auto minmax(0, 1fr) auto auto;
   min-height: 0;
   overflow: hidden;
+}
+
+.day-switcher {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 3px solid var(--line);
+  padding: clamp(8px, 1.5vh, 12px) 14px;
+  font-weight: 900;
+}
+
+.day-switcher span {
+  min-width: 5.4em;
+  text-align: center;
+  font-size: clamp(1rem, 2.5vh, 1.2rem);
+}
+
+.day-button {
+  min-height: clamp(42px, 6vh, 54px);
+  border: 3px solid var(--line);
+  border-radius: 999px;
+  background: #faf7ee;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: clamp(0.95rem, 2.7vw, 1.15rem);
+  font-weight: 900;
+}
+
+.day-button:disabled {
+  color: var(--soft);
+  border-style: dashed;
+  background: var(--paper-deep);
+  cursor: default;
 }
 
 .card-topline {
@@ -279,7 +313,9 @@ h1 {
   box-shadow: 2px 2px 0 #1a1a1a;
 }
 
-.button:focus-visible {
+.button:focus-visible,
+.day-button:focus-visible,
+.text-button:focus-visible {
   outline: 5px double var(--line);
   outline-offset: 4px;
 }
@@ -346,6 +382,12 @@ h1 {
     padding-left: 14px;
   }
 
+  .day-switcher {
+    gap: 8px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
   .button {
     border-radius: 18px;
   }
@@ -363,6 +405,10 @@ h1 {
 
   .text-button {
     min-height: 40px;
+  }
+
+  .day-button {
+    min-height: 36px;
   }
 
   .word-block h2 {
@@ -387,6 +433,11 @@ h1 {
   }
 
   .card-topline {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
+  .day-switcher {
     padding-top: 6px;
     padding-bottom: 6px;
   }
