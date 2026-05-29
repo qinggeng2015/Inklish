@@ -1,38 +1,36 @@
-:root {
-  --ink: #111;
-  --paper: #f4f1e8;
-  --paper-deep: #ded8c8;
-  --soft: #6c665b;
-  --line: #1f1f1f;
-  --shadow: 10px 10px 0 #1a1a1a;
-  --radius: 28px;
-  color-scheme: light;
-}
-
+/* Legacy Kindle browsers get this simple block layout first. */
 * {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-html {
-  height: 100%;
+html,
+body {
   min-height: 100%;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 14px 14px, rgba(17, 17, 17, 0.11) 1px, transparent 1px),
-    linear-gradient(135deg, #f8f5ec 0%, #ebe5d5 100%);
-  background-size: 28px 28px, 100% 100%;
+}
+
+html {
+  background: #f4f1e8;
 }
 
 body {
-  height: 100vh;
-  height: 100dvh;
-  min-height: 100%;
   margin: 0;
-  overflow: hidden;
-  color: var(--ink);
+  background: #f4f1e8;
+  color: #111;
   font-family: Georgia, "Songti SC", "Noto Serif CJK SC", serif;
   font-size: 18px;
-  line-height: 1.45;
+  line-height: 1.35;
+  -webkit-text-size-adjust: 100%;
+}
+
+main,
+header,
+section {
+  display: block;
+}
+
+[hidden] {
+  display: none !important;
 }
 
 button {
@@ -40,36 +38,31 @@ button {
 }
 
 .app-shell {
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
-  gap: clamp(6px, 1.4vh, 12px);
-  width: min(100%, 760px);
-  height: 100vh;
-  height: 100dvh;
+  width: auto;
+  max-width: 760px;
   margin: 0 auto;
-  overflow: hidden;
-  padding: clamp(8px, 1.8vh, 14px);
+  padding: 8px;
 }
 
 .panel {
-  border: 3px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--paper);
-  box-shadow: var(--shadow);
+  border: 3px solid #1f1f1f;
+  border-radius: 24px;
+  background: #f4f1e8;
+  box-shadow: 6px 6px 0 #1a1a1a;
 }
 
 .guide {
-  width: min(calc(100% - 28px), 720px);
-  max-height: calc(100vh - 28px);
-  max-height: calc(100dvh - 28px);
-  margin: auto;
-  padding: 26px;
+  position: fixed;
+  z-index: 10;
+  top: 8px;
+  right: 8px;
+  left: 8px;
+  max-width: 720px;
+  max-height: 760px;
+  margin: 0 auto;
+  padding: 18px;
   overflow: auto;
-  color: var(--ink);
-}
-
-.guide:not([open]) {
-  display: none;
+  color: #111;
 }
 
 .guide[open] {
@@ -77,35 +70,32 @@ button {
 }
 
 .guide::backdrop {
-  background:
-    radial-gradient(circle at 14px 14px, rgba(17, 17, 17, 0.22) 1px, transparent 1px),
-    rgba(244, 241, 232, 0.92);
-  background-size: 24px 24px, 100% 100%;
-}
-
-.guide-layout,
-.compact-header {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 18px;
-  align-items: center;
+  background: rgba(244, 241, 232, 0.92);
 }
 
 .guide-layout {
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
 .compact-header {
-  padding: 0 4px;
+  position: relative;
+  min-height: 54px;
+  padding: 0 60px 6px 4px;
+}
+
+.compact-header .text-button {
+  position: absolute;
+  top: 0;
+  right: 4px;
 }
 
 .eyebrow,
 .tiny-label {
-  margin: 0 0 8px;
-  color: var(--soft);
+  margin: 0 0 6px;
+  color: #6c665b;
   font-size: 0.82rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
@@ -116,98 +106,98 @@ p {
 }
 
 h1 {
-  margin-bottom: 12px;
-  font-size: clamp(2.35rem, 8vw, 4.7rem);
+  margin-bottom: 10px;
+  font-size: 42px;
   line-height: 0.98;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.04em;
 }
 
 .compact-header h1 {
   margin-bottom: 0;
-  font-size: clamp(1.8rem, 6vh, 3rem);
+  font-size: 34px;
 }
 
 .intro {
   max-width: 31rem;
   margin-bottom: 0;
   color: #312f2b;
-  font-size: clamp(1.05rem, 2.8vw, 1.35rem);
+  font-size: 1.1rem;
 }
 
 .daily-mark {
-  display: grid;
-  place-items: center;
-  width: 116px;
-  height: 116px;
-  border: 3px solid var(--line);
+  width: 92px;
+  height: 92px;
+  margin: 0 0 12px auto;
+  border: 3px solid #1f1f1f;
   border-radius: 50%;
-  background:
-    linear-gradient(90deg, transparent 47%, rgba(17, 17, 17, 0.16) 48% 52%, transparent 53%),
-    var(--paper-deep);
+  background: #ded8c8;
+  text-align: center;
 }
 
 .daily-mark span {
   display: block;
-  font-size: 3.8rem;
+  padding-top: 16px;
+  font-size: 3rem;
   font-weight: 900;
   line-height: 0.8;
 }
 
 .daily-mark small {
-  margin-top: -12px;
-  color: var(--soft);
-  font-size: 0.78rem;
+  display: block;
+  margin-top: 4px;
+  color: #6c665b;
+  font-size: 0.72rem;
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .learning-card {
-  display: grid;
-  grid-template-rows: auto auto minmax(0, 1fr) auto auto;
-  min-height: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .day-switcher {
-  display: grid;
-  grid-template-columns: auto 1fr auto auto;
-  align-items: center;
-  gap: 10px;
-  border-bottom: 3px solid var(--line);
-  padding: clamp(8px, 1.5vh, 12px) 14px;
+  overflow: hidden;
+  border-bottom: 3px solid #1f1f1f;
+  padding: 7px 8px;
+  white-space: nowrap;
   font-weight: 900;
 }
 
 .day-switcher span {
+  display: inline-block;
   min-width: 3.2em;
   text-align: center;
-  font-size: clamp(1rem, 2.5vh, 1.2rem);
+  font-size: 1rem;
+  vertical-align: middle;
 }
 
 .day-picker {
-  display: flex;
-  gap: 10px;
-  align-items: center;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .day-arrow,
 .day-button {
-  display: grid;
-  min-width: clamp(42px, 8vw, 54px);
-  min-height: clamp(42px, 6vh, 54px);
-  place-items: center;
-  border: 3px solid var(--line);
+  display: inline-block;
+  min-width: 38px;
+  min-height: 38px;
+  margin: 0 2px;
+  border: 3px solid #1f1f1f;
   border-radius: 50%;
+  padding: 0;
   background: #faf7ee;
-  color: var(--ink);
+  color: #111;
   cursor: pointer;
-  font-size: clamp(1.2rem, 3.2vw, 1.45rem);
+  font-size: 1.2rem;
   font-weight: 900;
+  line-height: 32px;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .day-arrow {
-  font-size: clamp(1.7rem, 4.6vw, 2.2rem);
+  font-size: 1.8rem;
 }
 
 .day-button[aria-current="true"] {
@@ -216,39 +206,45 @@ h1 {
 }
 
 .day-arrow:disabled {
-  color: var(--soft);
   border-style: dashed;
-  background: var(--paper-deep);
+  background: #ded8c8;
+  color: #6c665b;
   cursor: default;
 }
 
 .card-topline {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  border-bottom: 3px solid var(--line);
-  padding: clamp(8px, 1.7vh, 14px) 18px;
+  overflow: hidden;
+  border-bottom: 3px solid #1f1f1f;
+  padding: 8px 14px;
   color: #34312c;
-  font-size: clamp(0.95rem, 2.2vh, 1.05rem);
+  font-size: 1rem;
   font-weight: 900;
   letter-spacing: 0.04em;
 }
 
+#lesson-counter {
+  float: left;
+}
+
+#lesson-theme {
+  float: right;
+}
+
 .picture-frame {
-  display: grid;
-  min-height: 0;
+  height: 220px;
   overflow: hidden;
-  place-items: center;
-  border-bottom: 3px solid var(--line);
-  background:
-    linear-gradient(135deg, rgba(17, 17, 17, 0.08) 25%, transparent 25%) 0 0 / 24px 24px,
-    var(--paper-deep);
+  border-bottom: 3px solid #1f1f1f;
+  background: #ded8c8;
+  text-align: center;
 }
 
 .picture-frame svg {
-  width: min(70vw, 310px);
-  max-height: 100%;
-  padding: clamp(8px, 1.8vh, 16px);
+  display: block;
+  width: 280px;
+  max-width: 96%;
+  max-height: 210px;
+  margin: 0 auto;
+  padding: 8px;
 }
 
 .picture-frame path,
@@ -261,91 +257,87 @@ h1 {
 }
 
 .word-block {
-  padding: clamp(8px, 1.8vh, 16px) 20px clamp(6px, 1.2vh, 10px);
+  padding: 10px 16px 8px;
   text-align: center;
 }
 
 .word-block h2 {
   margin-bottom: 2px;
-  font-size: clamp(3rem, 11vh, 6.5rem);
+  font-size: 64px;
   line-height: 0.9;
-  letter-spacing: -0.08em;
+  letter-spacing: -0.06em;
 }
 
 .pronunciation {
-  margin-bottom: clamp(2px, 0.7vh, 4px);
-  color: var(--soft);
-  font-size: clamp(1.05rem, 3vh, 1.55rem);
+  margin-bottom: 2px;
+  color: #6c665b;
+  font-size: 1.25rem;
   font-weight: 700;
 }
 
 .meaning {
   margin-bottom: 0;
-  font-size: clamp(1.2rem, 3.8vh, 1.8rem);
+  font-size: 1.4rem;
   font-weight: 900;
 }
 
 .parent-cue {
   display: inline-block;
-  margin: clamp(8px, 1.5vh, 12px) 0 0;
-  border: 3px solid var(--line);
-  border-radius: 18px;
-  padding: clamp(7px, 1.2vh, 10px) 14px;
+  max-width: 100%;
+  margin: 8px 0 0;
+  border: 3px solid #1f1f1f;
+  border-radius: 16px;
+  padding: 7px 12px;
   background: #faf7ee;
-  font-size: clamp(0.95rem, 2.5vh, 1.2rem);
+  font-size: 1rem;
   font-weight: 900;
 }
 
 .actions {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-  padding: clamp(10px, 1.8vh, 16px) 20px clamp(14px, 2.4vh, 22px);
+  padding: 8px 14px 14px;
+  text-align: center;
 }
 
 .button {
-  min-height: clamp(56px, 8vh, 72px);
-  border: 3px solid var(--line);
-  border-radius: 22px;
+  display: inline-block;
+  width: 46%;
+  min-height: 56px;
+  margin: 0 1%;
+  border: 3px solid #1f1f1f;
+  border-radius: 18px;
   background: #faf7ee;
-  color: var(--ink);
-  box-shadow: 5px 5px 0 #1a1a1a;
+  color: #111;
+  box-shadow: 4px 4px 0 #1a1a1a;
   cursor: pointer;
-  font-size: clamp(1.15rem, 3.6vw, 1.5rem);
+  font-size: 1.35rem;
   font-weight: 900;
 }
 
 .text-button {
-  display: grid;
-  min-width: 48px;
-  min-height: 48px;
-  place-items: center;
-  border: 3px solid var(--line);
+  display: inline-block;
+  min-width: 46px;
+  min-height: 46px;
+  border: 3px solid #1f1f1f;
   border-radius: 50%;
   padding: 0;
   background: #faf7ee;
-  color: var(--ink);
+  color: #111;
   cursor: pointer;
   font-size: 1.4rem;
   font-weight: 900;
+  line-height: 40px;
+  text-align: center;
 }
 
 .symbol-button {
-  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  font-size: 2.2rem;
   line-height: 1;
 }
 
 .button:active {
+  -webkit-transform: translate(3px, 3px);
   transform: translate(3px, 3px);
   box-shadow: 2px 2px 0 #1a1a1a;
-}
-
-.button:focus-visible,
-.day-arrow:focus-visible,
-.day-button:focus-visible,
-.text-button:focus-visible {
-  outline: 5px double var(--line);
-  outline-offset: 4px;
 }
 
 .button.primary {
@@ -354,28 +346,270 @@ h1 {
 }
 
 .guide-steps {
-  border-top: 3px solid var(--line);
-  padding-top: 22px;
+  border-top: 3px solid #1f1f1f;
+  padding-top: 18px;
 }
 
 .guide-steps h2 {
-  margin-bottom: 14px;
-  font-size: clamp(1.9rem, 6vw, 3rem);
+  margin-bottom: 12px;
+  font-size: 2rem;
   letter-spacing: -0.04em;
 }
 
 .parent-steps {
-  display: grid;
-  gap: 12px;
   margin: 0;
   padding-left: 1.3em;
-  font-size: clamp(1.05rem, 3vw, 1.25rem);
+  font-size: 1.05rem;
   font-weight: 700;
+}
+
+.parent-steps li {
+  margin-bottom: 8px;
 }
 
 .guide-start {
   width: 100%;
-  margin-top: 24px;
+  margin-top: 20px;
+}
+
+@supports (display: grid) {
+  html {
+    height: 100%;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 14px 14px, rgba(17, 17, 17, 0.11) 1px, transparent 1px),
+      linear-gradient(135deg, #f8f5ec 0%, #ebe5d5 100%);
+    background-size: 28px 28px, 100% 100%;
+  }
+
+  body {
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .app-shell {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 10px;
+    gap: clamp(6px, 1.4vh, 12px);
+    width: 100%;
+    width: min(100%, 760px);
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    padding: 10px;
+    padding: clamp(8px, 1.8vh, 14px);
+  }
+
+  .panel {
+    border-radius: 28px;
+    box-shadow: 10px 10px 0 #1a1a1a;
+  }
+
+  .guide {
+    top: auto;
+    right: auto;
+    left: auto;
+    width: min(calc(100% - 28px), 720px);
+    max-height: calc(100vh - 28px);
+    max-height: calc(100dvh - 28px);
+    margin: auto;
+    padding: 26px;
+  }
+
+  .guide::backdrop {
+    background:
+      radial-gradient(circle at 14px 14px, rgba(17, 17, 17, 0.22) 1px, transparent 1px),
+      rgba(244, 241, 232, 0.92);
+    background-size: 24px 24px, 100% 100%;
+  }
+
+  .guide-layout,
+  .compact-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 18px;
+    align-items: center;
+  }
+
+  .guide-layout {
+    margin-bottom: 24px;
+  }
+
+  .compact-header {
+    position: static;
+    min-height: 0;
+    padding: 0 4px;
+  }
+
+  .compact-header .text-button {
+    position: static;
+  }
+
+  h1 {
+    margin-bottom: 12px;
+    font-size: clamp(2.35rem, 8vw, 4.7rem);
+  }
+
+  .compact-header h1 {
+    font-size: clamp(1.8rem, 6vh, 3rem);
+  }
+
+  .intro {
+    font-size: clamp(1.05rem, 2.8vw, 1.35rem);
+  }
+
+  .daily-mark {
+    display: grid;
+    place-items: center;
+    width: 116px;
+    height: 116px;
+    margin: 0;
+    background:
+      linear-gradient(90deg, transparent 47%, rgba(17, 17, 17, 0.16) 48% 52%, transparent 53%),
+      #ded8c8;
+  }
+
+  .daily-mark span {
+    padding-top: 0;
+    font-size: 3.8rem;
+  }
+
+  .daily-mark small {
+    margin-top: -12px;
+  }
+
+  .learning-card {
+    display: grid;
+    grid-template-rows: auto auto minmax(0, 1fr) auto auto;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .day-switcher {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 14px;
+    padding: clamp(8px, 1.5vh, 12px) 14px;
+    white-space: normal;
+  }
+
+  .day-picker {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .day-arrow,
+  .day-button {
+    display: grid;
+    min-width: clamp(42px, 8vw, 54px);
+    min-height: clamp(42px, 6vh, 54px);
+    margin: 0;
+    place-items: center;
+    font-size: clamp(1.2rem, 3.2vw, 1.45rem);
+    line-height: normal;
+  }
+
+  .day-arrow {
+    font-size: clamp(1.7rem, 4.6vw, 2.2rem);
+  }
+
+  .card-topline {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 18px;
+    padding: clamp(8px, 1.7vh, 14px) 18px;
+    font-size: clamp(0.95rem, 2.2vh, 1.05rem);
+  }
+
+  #lesson-counter,
+  #lesson-theme {
+    float: none;
+  }
+
+  .picture-frame {
+    display: grid;
+    height: auto;
+    min-height: 0;
+    place-items: center;
+    background:
+      linear-gradient(135deg, rgba(17, 17, 17, 0.08) 25%, transparent 25%) 0 0 / 24px 24px,
+      #ded8c8;
+  }
+
+  .picture-frame svg {
+    width: min(70vw, 310px);
+    max-height: 100%;
+    padding: clamp(8px, 1.8vh, 16px);
+  }
+
+  .word-block {
+    padding: clamp(8px, 1.8vh, 16px) 20px clamp(6px, 1.2vh, 10px);
+  }
+
+  .word-block h2 {
+    font-size: clamp(3rem, 11vh, 6.5rem);
+    letter-spacing: -0.08em;
+  }
+
+  .pronunciation {
+    margin-bottom: clamp(2px, 0.7vh, 4px);
+    font-size: clamp(1.05rem, 3vh, 1.55rem);
+  }
+
+  .meaning {
+    font-size: clamp(1.2rem, 3.8vh, 1.8rem);
+  }
+
+  .parent-cue {
+    margin-top: clamp(8px, 1.5vh, 12px);
+    padding: clamp(7px, 1.2vh, 10px) 14px;
+    font-size: clamp(0.95rem, 2.5vh, 1.2rem);
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    padding: clamp(10px, 1.8vh, 16px) 20px clamp(14px, 2.4vh, 22px);
+    text-align: left;
+  }
+
+  .button {
+    width: auto;
+    min-height: clamp(56px, 8vh, 72px);
+    margin: 0;
+    border-radius: 22px;
+    font-size: clamp(1.15rem, 3.6vw, 1.5rem);
+    box-shadow: 5px 5px 0 #1a1a1a;
+  }
+
+  .text-button {
+    display: grid;
+    min-width: 48px;
+    min-height: 48px;
+    place-items: center;
+    line-height: normal;
+  }
+
+  .symbol-button {
+    font-size: clamp(1.8rem, 6vw, 2.6rem);
+  }
+
+  .parent-steps {
+    display: grid;
+    gap: 12px;
+    font-size: clamp(1.05rem, 3vw, 1.25rem);
+  }
+
+  .parent-steps li {
+    margin-bottom: 0;
+  }
 }
 
 @media (max-width: 560px) {
@@ -384,18 +618,10 @@ h1 {
   }
 
   .guide {
-    width: min(calc(100% - 20px), 720px);
-    max-height: calc(100vh - 20px);
-    max-height: calc(100dvh - 20px);
     padding: 20px;
   }
 
-  .guide-layout {
-    grid-template-columns: 1fr;
-  }
-
   .daily-mark {
-    justify-self: end;
     width: 92px;
     height: 92px;
   }
@@ -405,23 +631,13 @@ h1 {
   }
 
   .actions {
-    gap: 10px;
     padding-right: 14px;
     padding-left: 14px;
   }
 
   .day-switcher {
-    gap: 8px;
-    padding-right: 10px;
-    padding-left: 10px;
-  }
-
-  .day-picker {
-    gap: 8px;
-  }
-
-  .button {
-    border-radius: 18px;
+    padding-right: 8px;
+    padding-left: 8px;
   }
 }
 
@@ -432,7 +648,11 @@ h1 {
   }
 
   .compact-header h1 {
-    font-size: 1.55rem;
+    font-size: 28px;
+  }
+
+  .picture-frame {
+    height: 190px;
   }
 
   .text-button {
@@ -441,17 +661,18 @@ h1 {
 
   .day-arrow,
   .day-button {
-    min-width: 36px;
-    min-height: 36px;
+    min-width: 34px;
+    min-height: 34px;
+    line-height: 28px;
   }
 
   .word-block h2 {
-    font-size: clamp(2.6rem, 10vh, 5rem);
+    font-size: 54px;
   }
 
   .parent-cue {
-    max-width: 100%;
     overflow: hidden;
+    max-width: 100%;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
@@ -466,11 +687,11 @@ h1 {
     border-radius: 20px;
   }
 
-  .card-topline {
-    padding-top: 6px;
-    padding-bottom: 6px;
+  .picture-frame {
+    height: 150px;
   }
 
+  .card-topline,
   .day-switcher {
     padding-top: 6px;
     padding-bottom: 6px;
@@ -492,7 +713,18 @@ h1 {
 
 @media (prefers-reduced-motion: no-preference) {
   .panel {
+    -webkit-animation: settle 420ms steps(2, end) both;
     animation: settle 420ms steps(2, end) both;
+  }
+
+  @-webkit-keyframes settle {
+    from {
+      opacity: 0.78;
+    }
+
+    to {
+      opacity: 1;
+    }
   }
 
   @keyframes settle {
@@ -507,24 +739,35 @@ h1 {
 }
 
 @media (monochrome) {
-  :root {
-    --paper: #fff;
-    --paper-deep: #eee;
-    --soft: #444;
+  html,
+  body {
+    background: #fff;
   }
 
-  html {
+  .panel,
+  .guide,
+  .button,
+  .text-button,
+  .day-arrow,
+  .day-button,
+  .parent-cue {
     background: #fff;
+  }
+
+  .picture-frame,
+  .daily-mark,
+  .day-arrow:disabled {
+    background: #eee;
   }
 }
 
 @media print {
-  .button {
+  .button,
+  .panel {
     box-shadow: none;
   }
 
   .panel {
     break-inside: avoid;
-    box-shadow: none;
   }
 }
