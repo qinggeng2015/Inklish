@@ -430,6 +430,362 @@ var artTemplates = {
   ].join("")
 };
 
+var lineArtTemplates = {
+  person: [
+    '<circle cx="140" cy="70" r="30" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<path d="M86 183 Q98 122 140 122 Q182 122 194 183 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M105 145 H175 M116 183 V152 M164 183 V152" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>'
+  ].join(""),
+  baby: [
+    '<circle cx="140" cy="76" r="34" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<path d="M84 151 Q113 113 140 150 Q167 113 196 151 Q179 191 140 191 Q101 191 84 151 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M119 82 H121 M159 82 H161 M124 101 Q140 113 157 101" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>'
+  ].join(""),
+  fruit: [
+    '<path d="M139 61 Q126 39 148 27" fill="none" stroke="#111" stroke-width="8" stroke-linecap="round"/>',
+    '<path d="M151 47 Q178 34 197 54 Q174 65 151 47 Z" fill="#ded8c8" stroke="#111" stroke-width="7" stroke-linejoin="round"/>',
+    '<circle cx="140" cy="124" r="61" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<path d="M115 101 Q140 82 166 101" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round"/>'
+  ].join(""),
+  banana: [
+    '<path d="M71 74 Q137 152 218 78 Q188 176 93 171 Q62 135 71 74 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M95 93 Q139 137 195 96" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round"/>'
+  ].join(""),
+  drink: [
+    '<path d="M94 55 H187 L176 188 H105 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M105 92 H177" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>',
+    '<path d="M168 30 L196 82" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>'
+  ].join(""),
+  bread: [
+    '<path d="M65 103 Q66 52 112 52 Q139 23 168 52 Q215 52 215 103 V172 H65 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M101 120 H179 M101 146 H179" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round"/>'
+  ].join(""),
+  egg: [
+    '<path d="M140 37 Q193 75 193 137 Q193 188 140 188 Q87 188 87 137 Q87 75 140 37 Z" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<circle cx="140" cy="134" r="27" fill="#ded8c8" stroke="#111" stroke-width="6"/>'
+  ].join(""),
+  bowl: [
+    '<path d="M65 107 H215 Q205 180 140 180 Q75 180 65 107 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M82 105 Q103 74 124 105 M121 105 Q142 73 163 105 M158 105 Q180 75 201 105" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round"/>',
+    '<path d="M97 184 H183" fill="none" stroke="#111" stroke-width="8" stroke-linecap="round"/>'
+  ].join(""),
+  snack: [
+    '<rect x="79" y="68" width="122" height="104" rx="18" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<circle cx="111" cy="99" r="7" fill="#111"/><circle cx="161" cy="95" r="7" fill="#111"/><circle cx="139" cy="130" r="7" fill="#111"/><circle cx="177" cy="146" r="7" fill="#111"/>'
+  ].join(""),
+  cake: [
+    '<path d="M75 96 H205 V178 H75 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M92 96 Q111 122 130 96 Q149 122 168 96 Q187 122 205 96" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>',
+    '<path d="M112 70 V95 M140 62 V95 M168 70 V95" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round"/>'
+  ].join(""),
+  utensil: [
+    '<path d="M103 39 V188 M82 41 V86 M103 41 V86 M124 41 V86" fill="none" stroke="#111" stroke-width="8" stroke-linecap="round"/>',
+    '<path d="M177 40 Q211 70 177 100 V188" fill="none" stroke="#111" stroke-width="8" stroke-linecap="round"/>'
+  ].join(""),
+  plate: [
+    '<circle cx="140" cy="112" r="77" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<circle cx="140" cy="112" r="45" fill="none" stroke="#111" stroke-width="6"/>'
+  ].join(""),
+  chair: [
+    '<path d="M91 56 H186 V119 H91 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M76 119 H204 V148 H76 Z M92 148 V190 M188 148 V190" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>'
+  ].join(""),
+  table: [
+    '<path d="M61 91 H219 V122 H61 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M88 122 V190 M192 122 V190" fill="none" stroke="#111" stroke-width="8" stroke-linecap="round"/>'
+  ].join(""),
+  bed: [
+    '<path d="M55 108 H225 V166 H55 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M55 83 H115 V108 H55 Z M55 166 V190 M225 166 V190" fill="#ded8c8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>'
+  ].join(""),
+  home: [
+    '<path d="M52 108 L140 43 L228 108 V190 H52 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M116 190 V134 H164 V190 M75 121 H107 V153 H75 Z M174 121 H206 V153 H174 Z" fill="#ded8c8" stroke="#111" stroke-width="7" stroke-linejoin="round"/>'
+  ].join(""),
+  door: [
+    '<rect x="91" y="38" width="98" height="154" rx="4" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<circle cx="168" cy="118" r="7" fill="#111"/>'
+  ].join(""),
+  window: [
+    '<rect x="64" y="50" width="152" height="128" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<path d="M140 52 V177 M66 114 H214" fill="none" stroke="#111" stroke-width="7"/>'
+  ].join(""),
+  light: [
+    '<path d="M140 34 V72 M88 58 L112 83 M192 58 L168 83" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>',
+    '<path d="M105 89 H175 L163 150 H117 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M121 172 H159" fill="none" stroke="#111" stroke-width="8" stroke-linecap="round"/>'
+  ].join(""),
+  clock: [
+    '<circle cx="140" cy="111" r="73" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<path d="M140 68 V113 L174 135" fill="none" stroke="#111" stroke-width="8" stroke-linecap="round"/>'
+  ].join(""),
+  sofa: [
+    '<path d="M72 106 Q73 70 107 70 H173 Q207 70 208 106 H220 Q233 106 233 130 V176 H47 V130 Q47 106 60 106 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M90 107 V145 M190 107 V145" fill="none" stroke="#111" stroke-width="7"/>'
+  ].join(""),
+  box: [
+    '<path d="M69 79 H211 V178 H69 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M69 79 L140 41 L211 79 M140 41 V178" fill="none" stroke="#111" stroke-width="7" stroke-linejoin="round"/>'
+  ].join(""),
+  bag: [
+    '<path d="M84 84 H196 L184 187 H96 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M111 85 Q111 45 140 45 Q169 45 169 85" fill="none" stroke="#111" stroke-width="8" stroke-linecap="round"/>'
+  ].join(""),
+  key: [
+    '<circle cx="93" cy="110" r="35" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<path d="M128 110 H222 M190 110 V138 M209 110 V129" fill="none" stroke="#111" stroke-width="8" stroke-linecap="round"/>'
+  ].join(""),
+  clothes: [
+    '<path d="M96 58 L121 43 Q140 58 159 43 L184 58 L214 101 L184 121 V185 H96 V121 L66 101 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M120 62 Q140 78 160 62" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round"/>'
+  ].join(""),
+  shoe: [
+    '<path d="M72 132 Q113 135 139 90 H178 Q184 122 225 137 Q228 166 191 169 H69 Q56 153 72 132 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M119 126 H171" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round"/>'
+  ].join(""),
+  hat: [
+    '<path d="M91 128 Q94 63 140 63 Q186 63 189 128" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M55 135 H225" fill="none" stroke="#111" stroke-width="10" stroke-linecap="round"/>'
+  ].join(""),
+  body: [
+    '<circle cx="140" cy="107" r="69" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<circle cx="116" cy="98" r="8" fill="#111"/><circle cx="164" cy="98" r="8" fill="#111"/>',
+    '<path d="M119 131 Q140 148 162 131" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>'
+  ].join(""),
+  hand: [
+    '<path d="M92 117 V70 Q92 55 105 55 Q118 55 118 70 V108 V57 Q118 43 131 43 Q144 43 144 57 V106 V65 Q144 52 157 52 Q170 52 170 65 V115 V83 Q170 69 183 69 Q196 69 196 83 V136 Q196 184 144 184 Q102 184 92 145 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>'
+  ].join(""),
+  foot: [
+    '<path d="M83 132 Q100 87 144 90 Q173 91 189 117 Q206 117 213 134 Q223 161 192 174 H91 Q61 157 83 132 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<circle cx="111" cy="100" r="7" fill="#111"/><circle cx="131" cy="94" r="7" fill="#111"/><circle cx="153" cy="96" r="7" fill="#111"/>'
+  ].join(""),
+  eye: [
+    '<path d="M50 112 Q140 43 230 112 Q140 181 50 112 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<circle cx="140" cy="112" r="30" fill="#ded8c8" stroke="#111" stroke-width="7"/><circle cx="140" cy="112" r="10" fill="#111"/>'
+  ].join(""),
+  bath: [
+    '<path d="M61 104 H219 V132 Q219 182 169 182 H111 Q61 182 61 132 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M85 104 V68 Q85 48 107 48 H126 M78 185 H98 M182 185 H202" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>'
+  ].join(""),
+  towel: [
+    '<rect x="82" y="45" width="116" height="144" rx="12" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<path d="M102 86 H178 M102 126 H178 M102 166 H178" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round"/>'
+  ].join(""),
+  soap: [
+    '<rect x="75" y="99" width="130" height="68" rx="30" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<circle cx="101" cy="71" r="13" fill="#f7f3e8" stroke="#111" stroke-width="6"/><circle cx="143" cy="61" r="20" fill="#f7f3e8" stroke="#111" stroke-width="6"/><circle cx="183" cy="78" r="12" fill="#f7f3e8" stroke="#111" stroke-width="6"/>'
+  ].join(""),
+  brush: [
+    '<path d="M83 159 L185 57 Q199 43 213 57 Q227 71 213 85 L111 187 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M74 171 L96 193 M93 153 L115 175 M113 133 L135 155" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round"/>'
+  ].join(""),
+  toilet: [
+    '<path d="M99 55 H183 V113 Q183 146 154 153 V183 H107 V153 Q82 143 82 114 Q82 91 99 82 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M93 82 H183 M96 187 H171" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>'
+  ].join(""),
+  vehicle: [
+    '<path d="M52 126 L80 83 H181 L220 126 V160 H52 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<circle cx="91" cy="163" r="18" fill="#ded8c8" stroke="#111" stroke-width="7"/><circle cx="185" cy="163" r="18" fill="#ded8c8" stroke="#111" stroke-width="7"/>',
+    '<path d="M96 83 V126 M160 83 V126" fill="none" stroke="#111" stroke-width="6"/>'
+  ].join(""),
+  bus: [
+    '<rect x="52" y="65" width="176" height="102" rx="18" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<path d="M73 99 H207 M94 66 V128 M140 66 V128 M186 66 V128" fill="none" stroke="#111" stroke-width="6"/>',
+    '<circle cx="93" cy="170" r="16" fill="#ded8c8" stroke="#111" stroke-width="7"/><circle cx="187" cy="170" r="16" fill="#ded8c8" stroke="#111" stroke-width="7"/>'
+  ].join(""),
+  train: [
+    '<rect x="54" y="68" width="172" height="93" rx="14" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<path d="M86 68 V128 M140 68 V128 M194 68 V128 M72 187 H208" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>',
+    '<circle cx="97" cy="163" r="13" fill="#111"/><circle cx="183" cy="163" r="13" fill="#111"/>'
+  ].join(""),
+  bike: [
+    '<circle cx="86" cy="154" r="34" fill="#f7f3e8" stroke="#111" stroke-width="8"/><circle cx="194" cy="154" r="34" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<path d="M86 154 L126 96 H159 L194 154 H128 L86 154 M159 96 L171 75 H196 M126 96 L117 76 H100" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>'
+  ].join(""),
+  boat: [
+    '<path d="M55 121 H225 L199 172 H81 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M139 121 V48 L190 121 M139 55 L93 121 M71 190 Q108 177 140 190 Q174 177 209 190" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>'
+  ].join(""),
+  plane: [
+    '<path d="M38 123 L238 57 L202 119 L239 158 L211 171 L170 142 L93 176 L79 159 L129 125 L66 97 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>'
+  ].join(""),
+  road: [
+    '<path d="M97 194 L126 45 H154 L183 194 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M140 62 V86 M140 111 V136 M140 162 V187" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round"/>'
+  ].join(""),
+  tree: [
+    '<path d="M129 185 V124 H151 V185" fill="#ded8c8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<circle cx="140" cy="78" r="44" fill="#f7f3e8" stroke="#111" stroke-width="8"/><circle cx="99" cy="111" r="35" fill="#f7f3e8" stroke="#111" stroke-width="8"/><circle cx="181" cy="111" r="35" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<path d="M92 188 H188" fill="none" stroke="#111" stroke-width="8" stroke-linecap="round"/>'
+  ].join(""),
+  flower: [
+    '<path d="M140 118 V190 M112 153 Q140 148 140 177 M168 153 Q140 148 140 177" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>',
+    '<circle cx="140" cy="86" r="18" fill="#ded8c8" stroke="#111" stroke-width="6"/><circle cx="140" cy="50" r="19" fill="#f7f3e8" stroke="#111" stroke-width="6"/><circle cx="105" cy="86" r="19" fill="#f7f3e8" stroke="#111" stroke-width="6"/><circle cx="175" cy="86" r="19" fill="#f7f3e8" stroke="#111" stroke-width="6"/><circle cx="140" cy="122" r="19" fill="#f7f3e8" stroke="#111" stroke-width="6"/>'
+  ].join(""),
+  nature: [
+    '<path d="M53 178 H227" fill="none" stroke="#111" stroke-width="8" stroke-linecap="round"/>',
+    '<path d="M68 161 Q91 102 120 162 Q152 71 207 162" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>'
+  ].join(""),
+  weather: [
+    '<path d="M87 110 Q89 70 128 75 Q150 42 183 70 Q222 75 222 113 Q222 149 178 149 H101 Q62 149 62 121 Q62 111 87 110 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M103 169 L92 195 M141 169 L130 195 M179 169 L168 195" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>'
+  ].join(""),
+  animal: [
+    '<path d="M73 103 Q86 62 130 69 H174 Q216 73 225 116 Q232 157 198 174 H93 Q57 161 64 125 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<circle cx="123" cy="110" r="7" fill="#111"/><circle cx="171" cy="110" r="7" fill="#111"/>',
+    '<path d="M146 124 L135 137 L157 137 Z M93 174 V190 M196 174 V190" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>'
+  ].join(""),
+  bird: [
+    '<path d="M82 122 Q96 72 149 78 Q199 84 207 129 Q208 171 153 180 Q100 176 82 122 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M205 120 L238 104 L209 142 M105 119 Q139 93 172 125" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>',
+    '<circle cx="163" cy="105" r="7" fill="#111"/>'
+  ].join(""),
+  bug: [
+    '<ellipse cx="140" cy="116" rx="45" ry="58" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<path d="M95 104 H50 M95 131 H55 M185 104 H230 M185 131 H225 M140 59 V173" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>',
+    '<circle cx="122" cy="91" r="7" fill="#111"/><circle cx="158" cy="91" r="7" fill="#111"/>'
+  ].join(""),
+  sea: [
+    '<path d="M59 115 Q114 66 180 115 Q114 164 59 115 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M180 115 L230 80 V150 Z" fill="#ded8c8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<circle cx="101" cy="105" r="7" fill="#111"/>'
+  ].join(""),
+  toy: [
+    '<rect x="67" y="74" width="65" height="65" rx="10" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<rect x="148" y="55" width="65" height="65" rx="10" fill="#ded8c8" stroke="#111" stroke-width="8"/>',
+    '<rect x="111" y="136" width="65" height="65" rx="10" fill="#f7f3e8" stroke="#111" stroke-width="8"/>'
+  ].join(""),
+  doll: [
+    '<circle cx="140" cy="67" r="29" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<path d="M101 187 L119 107 H161 L179 187 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M96 128 L65 155 M184 128 L215 155 M115 83 Q140 101 165 83" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>'
+  ].join(""),
+  teddy: [
+    '<circle cx="94" cy="72" r="24" fill="#ded8c8" stroke="#111" stroke-width="7"/><circle cx="186" cy="72" r="24" fill="#ded8c8" stroke="#111" stroke-width="7"/>',
+    '<circle cx="140" cy="105" r="58" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<circle cx="119" cy="99" r="7" fill="#111"/><circle cx="161" cy="99" r="7" fill="#111"/><path d="M140 112 L128 126 H152 Z M113 143 Q140 160 167 143" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>'
+  ].join(""),
+  art: [
+    '<path d="M82 160 L177 65 Q192 50 207 65 Q222 80 207 95 L112 190 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M72 171 L102 200 M183 70 L202 89" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>'
+  ].join(""),
+  music: [
+    '<path d="M110 58 V154 Q110 180 83 180 Q60 180 60 160 Q60 139 88 139 Q99 139 110 146 V58 L195 41 V136 Q195 162 168 162 Q145 162 145 142 Q145 121 173 121 Q184 121 195 128" fill="none" stroke="#111" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>'
+  ].join(""),
+  screen: [
+    '<rect x="58" y="60" width="164" height="106" rx="10" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<path d="M112 187 H168 M140 166 V187 M87 94 H193" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>'
+  ].join(""),
+  kitchen: [
+    '<path d="M89 78 H191 V174 H89 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M111 78 V174 M169 78 V174 M103 110 H121 M159 110 H177" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round"/>'
+  ].join(""),
+  medical: [
+    '<rect x="72" y="77" width="136" height="105" rx="18" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
+    '<path d="M140 100 V159 M111 130 H169 M111 77 V56 H169 V77" fill="none" stroke="#111" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>'
+  ].join(""),
+  outdoor: [
+    '<path d="M59 178 H221" fill="none" stroke="#111" stroke-width="8" stroke-linecap="round"/>',
+    '<path d="M82 178 V84 H198 V178 M82 119 H198 M110 84 V178 M170 84 V178" fill="#f7f3e8" stroke="#111" stroke-width="7" stroke-linejoin="round"/>'
+  ].join(""),
+  play: [
+    '<path d="M91 65 H189 L143 181 H75 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M102 96 H177" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>'
+  ].join(""),
+  safety: [
+    '<path d="M75 100 Q83 48 140 48 Q197 48 205 100 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M61 108 H219 M96 101 V82 M140 101 V61 M184 101 V82" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>'
+  ].join(""),
+  room: [
+    '<path d="M58 183 V58 H222 V183" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>',
+    '<path d="M58 118 H222 M112 58 V183 M168 58 V183" fill="none" stroke="#111" stroke-width="6"/>'
+  ].join(""),
+  cleaning: [
+    '<path d="M122 42 L164 186" fill="none" stroke="#111" stroke-width="8" stroke-linecap="round"/>',
+    '<path d="M137 144 H204 L217 187 H120 Z" fill="#f7f3e8" stroke="#111" stroke-width="8" stroke-linejoin="round"/>'
+  ].join("")
+};
+
+var lineArtDefinitions = {};
+
+function addLineArt(words, type) {
+  var list = words.split(" ");
+  var index;
+
+  for (index = 0; index < list.length; index += 1) {
+    lineArtDefinitions[list[index]] = type;
+  }
+}
+
+addLineArt("mom dad doctor nurse", "person");
+addLineArt("baby", "baby");
+addLineArt("apple orange grape pear peach lemon melon strawberry blueberry watermelon carrot potato tomato corn pea bean cheese yogurt cereal tofu honey jam", "fruit");
+addLineArt("banana", "banana");
+addLineArt("milk water juice bottle wipe shampoo lotion cream", "drink");
+addLineArt("bread toast sandwich cracker muffin pancake pizza meat chicken", "bread");
+addLineArt("egg", "egg");
+addLineArt("rice noodle soup bowl salad", "bowl");
+addLineArt("cookie candy", "snack");
+addLineArt("cake ice-cream", "cake");
+addLineArt("spoon fork straw", "utensil");
+addLineArt("plate tray napkin", "plate");
+addLineArt("chair high-chair", "chair");
+addLineArt("table", "table");
+addLineArt("bed pillow blanket crib cradle", "bed");
+addLineArt("house roof garage balcony bedroom kitchen bathroom garden", "home");
+addLineArt("door doorbell gate handle", "door");
+addLineArt("window wall floor curtain mirror picture", "window");
+addLineArt("light lamp night-light", "light");
+addLineArt("clock watch", "clock");
+addLineArt("sofa", "sofa");
+addLineArt("box basket bucket mailbox trash-can", "box");
+addLineArt("bag pocket", "bag");
+addLineArt("key", "key");
+addLineArt("shoe sock boot slipper", "shoe");
+addLineArt("hat helmet", "hat");
+addLineArt("shirt pants coat dress skirt glove scarf pajamas t-shirt sweater shorts raincoat mask bib", "clothes");
+addLineArt("ring necklace button zipper lace belt", "clothes");
+addLineArt("hand finger arm", "hand");
+addLineArt("foot toe leg knee", "foot");
+addLineArt("eye", "eye");
+addLineArt("ear nose mouth hair face tooth tummy head neck back cheek chin tongue nail", "body");
+addLineArt("tub potty diaper", "bath");
+addLineArt("towel washcloth tissue", "towel");
+addLineArt("soap toothpaste bubbles sponge", "soap");
+addLineArt("toothbrush comb brush", "brush");
+addLineArt("toilet sink", "toilet");
+addLineArt("car taxi police-car ambulance fire-truck seat remote", "vehicle");
+addLineArt("bus", "bus");
+addLineArt("train", "train");
+addLineArt("bike wheel", "bike");
+addLineArt("boat", "boat");
+addLineArt("plane", "plane");
+addLineArt("truck", "vehicle");
+addLineArt("road street bridge path", "road");
+addLineArt("tree", "tree");
+addLineArt("flower", "flower");
+addLineArt("grass leaf rock stick sand mud puddle shell beach wave hill", "nature");
+addLineArt("rain snow cloud sky wind", "weather");
+addLineArt("bird duck hen parrot", "bird");
+addLineArt("bee butterfly ant spider", "bug");
+addLineArt("whale shark crab goldfish", "sea");
+addLineArt("frog cow pig horse sheep goat mouse rabbit bear lion tiger monkey puppy kitten deer elephant giraffe zebra hamster donkey camel panda turtle snail", "animal");
+addLineArt("doll", "doll");
+addLineArt("block puzzle sticker storybook", "toy");
+addLineArt("teddy", "teddy");
+addLineArt("crayon pencil eraser paper paint glue scissors", "art");
+addLineArt("drum kite balloon shovel robot stroller pacifier", "toy");
+addLineArt("music song bell piano guitar flute", "music");
+addLineArt("phone tv", "screen");
+addLineArt("fridge oven pot pan kettle mug cup", "kitchen");
+addLineArt("medicine bandage", "medical");
+addLineArt("park store school fence yard sign bench", "outdoor");
+addLineArt("slide swing", "play");
+addLineArt("safety", "safety");
+addLineArt("rug mat drawer shelf closet", "room");
+addLineArt("broom mop dustpan", "cleaning");
+addLineArt("stairs elevator", "room");
+
 var state = {
   dayIndex: 0,
   index: 0
@@ -523,10 +879,32 @@ function closeGuide() {
 }
 
 function renderArt(lesson) {
+  var lineArtType;
+
   if (artTemplates[lesson.art]) {
     return artTemplates[lesson.art];
   }
 
+  lineArtType = lineArtDefinitions[lesson.art];
+
+  if (lineArtType && lineArtTemplates[lineArtType]) {
+    return wrapLineArt(lineArtTemplates[lineArtType], lesson.word);
+  }
+
+  return renderWordCard(lesson);
+}
+
+function wrapLineArt(content, label) {
+  return [
+    '<svg viewBox="0 0 280 220" role="img" aria-label="',
+    escapeHtml(label),
+    ' drawing">',
+    content,
+    '</svg>'
+  ].join("");
+}
+
+function renderWordCard(lesson) {
   return [
     '<svg viewBox="0 0 280 220" role="img" aria-label="word card">',
     '<rect x="38" y="28" width="204" height="164" rx="24" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
@@ -564,7 +942,7 @@ function renderLesson() {
   elements.word.innerHTML = lesson.word;
   elements.pronunciation.innerHTML = lesson.pronunciation;
   elements.meaning.innerHTML = lesson.meaning;
-  elements.parentCue.innerHTML = "家长慢读：" + lesson.sentence;
+  elements.parentCue.innerHTML = lesson.sentence;
 }
 
 function getVisibleDayIndexes() {
