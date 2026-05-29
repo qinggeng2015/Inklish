@@ -188,8 +188,7 @@ const elements = {
   guideButton: document.querySelector("#guide-button"),
   title: document.querySelector("#app-title"),
   dayLabel: document.querySelector("#day-label"),
-  prevDayButton: document.querySelector("#prev-day-button"),
-  nextDayButton: document.querySelector("#next-day-button"),
+  dayPicker: document.querySelector("#day-picker"),
   counter: document.querySelector("#lesson-counter"),
   theme: document.querySelector("#lesson-theme"),
   picture: document.querySelector("#picture-frame"),
@@ -244,8 +243,6 @@ function renderLesson() {
 
   elements.title.textContent = day.title;
   elements.dayLabel.textContent = day.label;
-  elements.prevDayButton.disabled = state.dayIndex === 0;
-  elements.nextDayButton.disabled = state.dayIndex === lessonDays.length - 1;
   elements.counter.textContent = `${state.index + 1} / ${lessons.length}`;
   elements.theme.textContent = lesson.theme;
   elements.picture.innerHTML = artTemplates[lesson.art];
@@ -255,26 +252,38 @@ function renderLesson() {
   elements.parentCue.textContent = `家长慢读：${lesson.sentence}`;
 }
 
+function renderDayPicker() {
+  elements.dayPicker.innerHTML = lessonDays
+    .map((day, index) => {
+      const isCurrent = index === state.dayIndex;
+      const marker = isCurrent ? "●" : "○";
+
+      return `<button class="day-button" type="button" data-day-index="${index}" aria-label="${day.label}" aria-current="${isCurrent}">${marker}</button>`;
+    })
+    .join("");
+}
+
 elements.startButton.addEventListener("click", closeGuide);
 elements.guideButton.addEventListener("click", openGuide);
 
-function changeDay(delta) {
-  const nextDayIndex = state.dayIndex + delta;
-  if (nextDayIndex < 0 || nextDayIndex >= lessonDays.length) {
+function selectDay(dayIndex) {
+  if (dayIndex < 0 || dayIndex >= lessonDays.length || dayIndex === state.dayIndex) {
     return;
   }
 
-  state.dayIndex = nextDayIndex;
+  state.dayIndex = dayIndex;
   state.index = 0;
+  renderDayPicker();
   renderLesson();
 }
 
-elements.prevDayButton.addEventListener("click", () => {
-  changeDay(-1);
-});
+elements.dayPicker.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-day-index]");
+  if (!button) {
+    return;
+  }
 
-elements.nextDayButton.addEventListener("click", () => {
-  changeDay(1);
+  selectDay(Number(button.dataset.dayIndex));
 });
 
 elements.prevButton.addEventListener("click", () => {
@@ -289,6 +298,7 @@ elements.nextButton.addEventListener("click", () => {
   renderLesson();
 });
 
+renderDayPicker();
 renderLesson();
 
 if (!hasSeenGuide()) {

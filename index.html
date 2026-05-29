@@ -36,8 +36,13 @@
         </ol>
       </section>
 
-      <button class="button primary guide-start" id="start-button" type="button">
-        开始学习
+      <button
+        class="button primary guide-start symbol-button"
+        id="start-button"
+        type="button"
+        aria-label="开始学习"
+      >
+        ▶
       </button>
     </dialog>
 
@@ -47,20 +52,15 @@
           <p class="eyebrow">Inklish</p>
           <h1 id="app-title">Today</h1>
         </div>
-        <button class="text-button" id="guide-button" type="button">
-          玩法
+        <button class="text-button" id="guide-button" type="button" aria-label="玩法">
+          ?
         </button>
       </header>
 
       <section class="learning-card panel" aria-live="polite">
         <div class="day-switcher" aria-label="day navigation">
-          <button class="day-button" id="prev-day-button" type="button">
-            昨天
-          </button>
+          <div class="day-picker" id="day-picker"></div>
           <span id="day-label">今天</span>
-          <button class="day-button" id="next-day-button" type="button">
-            明天
-          </button>
         </div>
 
         <div class="card-topline">
@@ -79,11 +79,11 @@
         </div>
 
         <div class="actions" aria-label="learning actions">
-          <button class="button" id="prev-button" type="button">
-            上一个
+          <button class="button symbol-button" id="prev-button" type="button" aria-label="上一个单词">
+            ←
           </button>
-          <button class="button primary" id="next-button" type="button">
-            下一个
+          <button class="button primary symbol-button" id="next-button" type="button" aria-label="下一个单词">
+            →
           </button>
         </div>
       </section>
