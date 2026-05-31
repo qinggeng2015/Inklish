@@ -240,7 +240,7 @@ h1 {
 
 .picture-frame svg {
   display: block;
-  width: 460px;
+  width: 500px;
   max-width: 96%;
   max-height: 350px;
   margin: 0 auto;
@@ -543,7 +543,7 @@ h1 {
   }
 
   .picture-frame svg {
-    width: min(70vw, 310px);
+    width: min(82vw, 390px);
     max-height: 100%;
     padding: clamp(8px, 1.8vh, 16px);
   }
