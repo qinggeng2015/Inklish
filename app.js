@@ -1855,23 +1855,6 @@ function closeGuide() {
 }
 
 function renderArt(lesson) {
-  var lineArtType;
-  var detailedArt = renderDetailedArt(lesson);
-
-  if (detailedArt) {
-    return detailedArt;
-  }
-
-  if (artTemplates[lesson.art]) {
-    return artTemplates[lesson.art];
-  }
-
-  lineArtType = lineArtDefinitions[lesson.art];
-
-  if (lineArtType && lineArtTemplates[lineArtType]) {
-    return wrapLineArt(lineArtTemplates[lineArtType], lesson.word);
-  }
-
   return renderWordCard(lesson);
 }
 
@@ -1902,6 +1885,25 @@ function renderWordCard(lesson) {
   ].join("");
 }
 
+function renderPicture(lesson) {
+  var image;
+
+  image = document.createElement("img");
+  image.className = "generated-word-image";
+  image.alt = lesson.word + " picture";
+  image.onerror = function () {
+    if (!elements.picture.contains(image)) {
+      return;
+    }
+
+    elements.picture.innerHTML = renderArt(lesson);
+  };
+  image.src = "assets/word-images/" + encodeURIComponent(lesson.art) + ".jpeg";
+
+  elements.picture.innerHTML = "";
+  elements.picture.appendChild(image);
+}
+
 function escapeHtml(value) {
   return String(value)
     .replace(/&/g, "&amp;")
@@ -1919,7 +1921,7 @@ function renderLesson() {
   elements.dayLabel.innerHTML = day.label;
   elements.counter.innerHTML = state.index + 1 + " / " + lessons.length;
   elements.theme.innerHTML = lesson.theme;
-  elements.picture.innerHTML = renderArt(lesson);
+  renderPicture(lesson);
   elements.word.innerHTML = lesson.word;
   elements.pronunciation.innerHTML = lesson.pronunciation;
   elements.meaning.innerHTML = lesson.meaning;

@@ -247,6 +247,14 @@ h1 {
   padding: 8px;
 }
 
+.generated-word-image {
+  display: block;
+  width: min(96%, 340px);
+  max-height: 340px;
+  margin: 10px auto;
+  object-fit: contain;
+}
+
 .picture-frame path,
 .picture-frame circle,
 .picture-frame ellipse,
@@ -548,6 +556,12 @@ h1 {
     padding: clamp(8px, 1.8vh, 16px);
   }
 
+  .generated-word-image {
+    width: min(82vw, 360px);
+    max-height: calc(100% - 16px);
+    margin: 8px auto;
+  }
+
   .word-block {
     padding: clamp(8px, 1.8vh, 16px) 20px clamp(6px, 1.2vh, 10px);
   }
@@ -638,6 +652,11 @@ h1 {
     max-height: 210px;
   }
 
+  .generated-word-image {
+    width: min(86vw, 210px);
+    max-height: 210px;
+  }
+
   .word-block {
     padding: 10px 16px 8px;
   }
@@ -705,6 +724,12 @@ h1 {
     height: 190px;
   }
 
+  .generated-word-image {
+    width: min(72vw, 170px);
+    max-height: calc(100% - 16px);
+    margin: 8px auto;
+  }
+
   .text-button {
     min-height: 40px;
   }
@@ -739,6 +764,12 @@ h1 {
 
   .picture-frame {
     height: 150px;
+  }
+
+  .generated-word-image {
+    width: min(62vw, 134px);
+    max-height: calc(100% - 12px);
+    margin: 6px auto;
   }
 
   .card-topline,
