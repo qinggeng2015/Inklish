@@ -301,16 +301,22 @@ var vocabulary = [
   ["Handle", "/ˈhændəl/", "把手", "Home", "a"]
 ];
 
+var wordsPerDay = 5;
+
 function buildLessonDays(entries) {
   var days = [];
   var dayIndex;
   var lessonIndex;
   var lessons;
 
-  for (dayIndex = 0; dayIndex < entries.length; dayIndex += 3) {
+  for (dayIndex = 0; dayIndex < entries.length; dayIndex += wordsPerDay) {
     lessons = [];
 
-    for (lessonIndex = 0; lessonIndex < 3; lessonIndex += 1) {
+    for (
+      lessonIndex = 0;
+      lessonIndex < wordsPerDay && entries[dayIndex + lessonIndex];
+      lessonIndex += 1
+    ) {
       lessons.push(buildLesson(entries[dayIndex + lessonIndex]));
     }
 
