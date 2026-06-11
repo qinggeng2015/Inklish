@@ -1965,7 +1965,7 @@ function renderDayMenu() {
         '" aria-selected="' +
         isCurrent +
         '">' +
-        index + 1 +
+        (index + 1) +
         "</button>"
     );
   }

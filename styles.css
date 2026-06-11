@@ -455,10 +455,11 @@ h1 {
     display: grid;
     grid-template-rows: minmax(0, 1fr);
     width: 100%;
-    width: min(100%, 760px);
+    width: min(100%, 430px);
     height: 100vh;
     height: 100dvh;
     overflow: hidden;
+    margin: 0 auto;
     padding: 10px;
     padding: clamp(8px, 1.8vh, 14px);
   }
@@ -667,7 +668,7 @@ h1 {
   }
 
   .generated-word-image {
-    width: min(82vw, 360px);
+    width: min(82vw, 360px, 70vh);
     max-height: calc(100% - 16px);
     margin: 8px auto;
   }
@@ -733,6 +734,13 @@ h1 {
 
   .parent-steps li {
     margin-bottom: 0;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 700px) {
+  .app-shell {
+    width: min(100%, 430px, calc(100vh * 0.56));
+    width: min(100%, 430px, calc(100dvh * 0.56));
   }
 }
 
