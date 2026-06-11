@@ -1775,6 +1775,7 @@ var state = {
 };
 
 var dayPageSize = 20;
+var viewportFitTimer = null;
 
 var storageKey = "inklish-guide-seen";
 
@@ -1911,7 +1912,9 @@ function renderPicture(lesson) {
     }
 
     elements.picture.innerHTML = renderArt(lesson);
+    scheduleViewportFit();
   };
+  image.onload = scheduleViewportFit;
   image.src = "assets/word-images/" + encodeURIComponent(lesson.art) + ".png";
 
   elements.picture.innerHTML = "";
@@ -1940,6 +1943,122 @@ function renderLesson() {
   elements.pronunciation.innerHTML = lesson.pronunciation;
   elements.meaning.innerHTML = lesson.meaning;
   elements.parentCue.innerHTML = lesson.sentence;
+  scheduleViewportFit();
+}
+
+function getViewportHeight() {
+  return (
+    window.innerHeight ||
+    document.documentElement.clientHeight ||
+    document.body.clientHeight ||
+    0
+  );
+}
+
+function getViewportWidth() {
+  return (
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth ||
+    0
+  );
+}
+
+function findPictureMedia() {
+  var image = elements.picture.getElementsByTagName("img")[0];
+
+  if (image) {
+    return image;
+  }
+
+  return elements.picture.getElementsByTagName("svg")[0];
+}
+
+function fitLessonToViewport() {
+  var shell = document.getElementsByTagName("main")[0];
+  var media = findPictureMedia();
+  var viewportHeight = getViewportHeight();
+  var viewportWidth = getViewportWidth();
+  var shellTop = 0;
+  var availableHeight;
+  var shellHeight;
+  var basePictureHeight;
+  var targetPictureHeight;
+  var maxPictureHeight;
+  var minPictureHeight;
+  var mediaSize;
+
+  if (!shell || !viewportHeight || viewportHeight < 360) {
+    return;
+  }
+
+  elements.picture.style.height = "";
+
+  if (media) {
+    media.style.width = "";
+    media.style.maxHeight = "";
+  }
+
+  if (shell.getBoundingClientRect) {
+    shellTop = shell.getBoundingClientRect().top;
+
+    if (shellTop < 0) {
+      shellTop = 0;
+    }
+  }
+
+  availableHeight = viewportHeight - shellTop - 2;
+  shellHeight = shell.offsetHeight;
+  basePictureHeight = elements.picture.offsetHeight;
+  targetPictureHeight = basePictureHeight;
+
+  if (!shellHeight || !basePictureHeight || availableHeight <= 0) {
+    return;
+  }
+
+  if (shellHeight < availableHeight) {
+    targetPictureHeight += availableHeight - shellHeight;
+  } else if (shellHeight > availableHeight + 4) {
+    targetPictureHeight -= shellHeight - availableHeight + 4;
+  }
+
+  maxPictureHeight = Math.floor(viewportHeight * 0.42);
+  minPictureHeight = viewportHeight < 560 ? 104 : 140;
+  targetPictureHeight = Math.max(
+    minPictureHeight,
+    Math.min(maxPictureHeight, targetPictureHeight)
+  );
+
+  if (Math.abs(targetPictureHeight - basePictureHeight) > 3) {
+    elements.picture.style.height = targetPictureHeight + "px";
+  }
+
+  if (media && viewportWidth) {
+    mediaSize = Math.min(
+      targetPictureHeight - 12,
+      Math.floor(viewportWidth * 0.7),
+      260
+    );
+    mediaSize = Math.max(90, mediaSize);
+    media.style.width = mediaSize + "px";
+    media.style.maxHeight = targetPictureHeight - 10 + "px";
+  }
+}
+
+function scheduleViewportFit() {
+  if (viewportFitTimer && window.clearTimeout) {
+    window.clearTimeout(viewportFitTimer);
+  }
+
+  if (window.setTimeout) {
+    viewportFitTimer = window.setTimeout(function () {
+      viewportFitTimer = null;
+      fitLessonToViewport();
+    }, 0);
+    return;
+  }
+
+  fitLessonToViewport();
 }
 
 function getDayPageStart(dayIndex) {
@@ -2110,6 +2229,8 @@ on(document, "keydown", function (event) {
     closeDayMenu();
   }
 });
+
+on(window, "resize", scheduleViewportFit);
 
 renderDayControls();
 renderLesson();

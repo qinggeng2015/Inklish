@@ -38,16 +38,16 @@ button {
 
 .app-shell {
   width: 100%;
-  max-width: 430px;
-  margin: 0 auto;
-  padding: 5px 8px 8px 5px;
+  max-width: none;
+  margin: 0;
+  padding: 4px 6px 6px 4px;
 }
 
 .panel {
   border: 3px solid #1f1f1f;
   border-radius: 24px;
   background: #f4f1e8;
-  box-shadow: 4px 4px 0 #1a1a1a;
+  box-shadow: 3px 3px 0 #1a1a1a;
 }
 
 .guide {
@@ -291,7 +291,7 @@ h1 {
 }
 
 .picture-frame {
-  height: 142px;
+  height: 190px;
   overflow: hidden;
   border-bottom: 3px solid #1f1f1f;
   background: #ded8c8;
@@ -300,18 +300,18 @@ h1 {
 
 .picture-frame svg {
   display: block;
-  width: 176px;
+  width: 224px;
   max-width: 96%;
-  max-height: 136px;
+  max-height: 182px;
   margin: 0 auto;
   padding: 8px;
 }
 
 .generated-word-image {
   display: block;
-  width: 136px;
+  width: 182px;
   max-width: 92%;
-  max-height: 136px;
+  max-height: 182px;
   margin: 4px auto;
   object-fit: contain;
 }
@@ -460,17 +460,17 @@ h1 {
   .app-shell {
     display: block;
     width: 100%;
-    max-width: 430px;
+    max-width: none;
     min-height: 0;
     overflow: visible;
-    margin: 0 auto;
-    padding: 6px 10px 10px 6px;
-    padding: clamp(5px, 1vh, 9px) clamp(8px, 1.4vh, 12px) clamp(8px, 1.4vh, 12px) clamp(5px, 1vh, 9px);
+    margin: 0;
+    padding: 4px 7px 7px 4px;
+    padding: clamp(4px, 0.8vh, 7px) clamp(6px, 1vh, 10px) clamp(6px, 1vh, 10px) clamp(4px, 0.8vh, 7px);
   }
 
   .panel {
     border-radius: 28px;
-    box-shadow: 5px 5px 0 #1a1a1a;
+    box-shadow: 3px 3px 0 #1a1a1a;
   }
 
   .guide {
@@ -659,8 +659,8 @@ h1 {
 
   .picture-frame {
     display: grid;
-    height: 128px;
-    height: clamp(96px, 22vh, 150px);
+    height: 190px;
+    height: clamp(150px, 31vh, 230px);
     min-height: 0;
     place-items: center;
     background:
@@ -669,13 +669,13 @@ h1 {
   }
 
   .picture-frame svg {
-    width: min(52vw, 154px, 22vh);
+    width: min(72vw, 220px, 31vh);
     max-height: calc(100% - 12px);
     padding: clamp(6px, 1.2vh, 10px);
   }
 
   .generated-word-image {
-    width: min(52vw, 142px, 22vh);
+    width: min(72vw, 210px, 31vh);
     max-height: calc(100% - 12px);
     margin: 6px auto;
   }
@@ -745,7 +745,7 @@ h1 {
   }
 }
 
-@media (orientation: landscape) and (min-width: 700px) {
+@media (orientation: landscape) and (min-width: 960px) and (hover: hover) {
   .app-shell {
     width: 100%;
     max-width: 430px;
@@ -768,17 +768,17 @@ h1 {
   }
 
   .picture-frame {
-    height: 128px;
+    height: 178px;
   }
 
   .picture-frame svg {
-    width: 150px;
-    max-height: 120px;
+    width: 208px;
+    max-height: 170px;
   }
 
   .generated-word-image {
-    width: min(58vw, 120px);
-    max-height: 120px;
+    width: min(70vw, 170px);
+    max-height: 170px;
   }
 
   .word-block {
@@ -786,7 +786,7 @@ h1 {
   }
 
   .word-block h2 {
-    font-size: 82px;
+    font-size: 88px;
   }
 
   .pronunciation {
@@ -840,11 +840,11 @@ h1 {
   }
 
   .picture-frame {
-    height: 108px;
+    height: 150px;
   }
 
   .generated-word-image {
-    width: min(54vw, 102px);
+    width: min(64vw, 142px);
     max-height: calc(100% - 10px);
     margin: 5px auto;
   }
@@ -872,7 +872,7 @@ h1 {
   }
 
   .word-block h2 {
-    font-size: 76px;
+    font-size: 84px;
   }
 
   .parent-cue {
@@ -893,11 +893,11 @@ h1 {
   }
 
   .picture-frame {
-    height: 86px;
+    height: 118px;
   }
 
   .generated-word-image {
-    width: min(48vw, 82px);
+    width: min(58vw, 110px);
     max-height: calc(100% - 8px);
     margin: 4px auto;
   }
