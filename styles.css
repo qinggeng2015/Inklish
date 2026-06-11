@@ -470,14 +470,17 @@ h1 {
   }
 
   .guide {
-    top: auto;
+    top: 50%;
     right: auto;
-    left: auto;
+    bottom: auto;
+    left: 50%;
     width: min(calc(100% - 28px), 720px);
     max-height: calc(100vh - 28px);
     max-height: calc(100dvh - 28px);
     margin: auto;
     padding: 26px;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
 
   .guide::backdrop {
