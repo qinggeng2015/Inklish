@@ -1898,7 +1898,7 @@ function renderPicture(lesson) {
 
     elements.picture.innerHTML = renderArt(lesson);
   };
-  image.src = "assets/word-images/" + encodeURIComponent(lesson.art) + ".jpeg";
+  image.src = "assets/word-images/" + encodeURIComponent(lesson.art) + ".png";
 
   elements.picture.innerHTML = "";
   elements.picture.appendChild(image);
