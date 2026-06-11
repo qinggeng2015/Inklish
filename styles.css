@@ -6,7 +6,6 @@
 
 html,
 body {
-  height: 100%;
   min-height: 100%;
 }
 
@@ -38,20 +37,17 @@ button {
 }
 
 .app-shell {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
   width: 100%;
-  max-width: none;
-  height: 100%;
-  margin: 0;
-  padding: 10px;
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 5px 8px 8px 5px;
 }
 
 .panel {
   border: 3px solid #1f1f1f;
   border-radius: 24px;
   background: #f4f1e8;
-  box-shadow: 6px 6px 0 #1a1a1a;
+  box-shadow: 4px 4px 0 #1a1a1a;
 }
 
 .guide {
@@ -144,11 +140,7 @@ h1 {
 }
 
 .learning-card {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-box-flex: 1;
   position: relative;
-  height: 100%;
   overflow: visible;
 }
 
@@ -156,7 +148,7 @@ h1 {
   position: relative;
   overflow: hidden;
   border-bottom: 3px solid #1f1f1f;
-  padding: 7px 8px;
+  padding: 5px 6px;
   white-space: nowrap;
   font-weight: 900;
 }
@@ -164,11 +156,11 @@ h1 {
 .day-select-button {
   display: inline-block;
   min-width: 136px;
-  min-height: 42px;
+  min-height: 34px;
   margin: 0 4px 0 0;
   border: 3px solid #1f1f1f;
   border-radius: 14px;
-  padding: 4px 12px;
+  padding: 3px 10px;
   background: #faf7ee;
   color: #111;
   cursor: pointer;
@@ -184,7 +176,7 @@ h1 {
 }
 
 .day-title {
-  font-size: 1.05rem;
+  font-size: 0.98rem;
 }
 
 .day-progress {
@@ -199,7 +191,7 @@ h1 {
 .day-cell {
   display: inline-block;
   min-width: 38px;
-  min-height: 38px;
+  min-height: 34px;
   margin: 0 2px;
   border: 3px solid #1f1f1f;
   border-radius: 50%;
@@ -209,7 +201,7 @@ h1 {
   cursor: pointer;
   font-size: 1.2rem;
   font-weight: 900;
-  line-height: 32px;
+  line-height: 28px;
   text-align: center;
   vertical-align: middle;
 }
@@ -283,7 +275,7 @@ h1 {
 .card-topline {
   overflow: hidden;
   border-bottom: 3px solid #1f1f1f;
-  padding: 8px 14px;
+  padding: 6px 12px;
   color: #34312c;
   font-size: 1rem;
   font-weight: 900;
@@ -299,7 +291,7 @@ h1 {
 }
 
 .picture-frame {
-  height: 220px;
+  height: 142px;
   overflow: hidden;
   border-bottom: 3px solid #1f1f1f;
   background: #ded8c8;
@@ -308,18 +300,18 @@ h1 {
 
 .picture-frame svg {
   display: block;
-  width: 270px;
+  width: 176px;
   max-width: 96%;
-  max-height: 212px;
+  max-height: 136px;
   margin: 0 auto;
   padding: 8px;
 }
 
 .generated-word-image {
   display: block;
-  width: 210px;
+  width: 136px;
   max-width: 92%;
-  max-height: 212px;
+  max-height: 136px;
   margin: 4px auto;
   object-fit: contain;
 }
@@ -334,13 +326,13 @@ h1 {
 }
 
 .word-block {
-  padding: 14px 16px 10px;
+  padding: 10px 14px 8px;
   text-align: center;
 }
 
 .word-block h2 {
   margin-bottom: 2px;
-  font-size: 88px;
+  font-size: 86px;
   line-height: 0.9;
   letter-spacing: -0.06em;
 }
@@ -371,7 +363,8 @@ h1 {
 }
 
 .actions {
-  padding: 8px 14px 12px;
+  clear: both;
+  padding: 6px 14px 10px;
   text-align: center;
 }
 
@@ -451,8 +444,8 @@ h1 {
 
 @supports (display: grid) {
   html {
-    height: 100%;
-    overflow: hidden;
+    min-height: 100%;
+    overflow-x: hidden;
     background:
       radial-gradient(circle at 14px 14px, rgba(17, 17, 17, 0.11) 1px, transparent 1px),
       linear-gradient(135deg, #f8f5ec 0%, #ebe5d5 100%);
@@ -460,27 +453,24 @@ h1 {
   }
 
   body {
-    height: 100vh;
-    height: 100dvh;
-    overflow: hidden;
+    min-height: 100%;
+    overflow-x: hidden;
   }
 
   .app-shell {
-    display: grid;
-    grid-template-rows: minmax(0, 1fr);
+    display: block;
     width: 100%;
-    width: min(100%, 430px);
-    height: 100vh;
-    height: 100dvh;
-    overflow: hidden;
+    max-width: 430px;
+    min-height: 0;
+    overflow: visible;
     margin: 0 auto;
-    padding: 10px;
-    padding: clamp(8px, 1.8vh, 14px);
+    padding: 6px 10px 10px 6px;
+    padding: clamp(5px, 1vh, 9px) clamp(8px, 1.4vh, 12px) clamp(8px, 1.4vh, 12px) clamp(5px, 1vh, 9px);
   }
 
   .panel {
     border-radius: 28px;
-    box-shadow: 10px 10px 0 #1a1a1a;
+    box-shadow: 5px 5px 0 #1a1a1a;
   }
 
   .guide {
@@ -545,20 +535,19 @@ h1 {
   }
 
   .learning-card {
-    display: grid;
-    grid-template-rows: auto auto minmax(150px, 0.78fr) auto auto;
+    display: block;
     min-height: 0;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .lesson-toolbar {
     display: grid;
     grid-template-columns: minmax(96px, 1fr) auto auto auto;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     overflow: visible;
-    padding: 8px 12px;
-    padding: clamp(6px, 1.2vh, 10px) 12px;
+    padding: 6px 10px;
+    padding: clamp(5px, 1vh, 8px) 10px;
     white-space: normal;
   }
 
@@ -566,7 +555,7 @@ h1 {
     display: grid;
     align-content: center;
     min-width: 0;
-    min-height: clamp(40px, 6vh, 50px);
+    min-height: clamp(36px, 5.2vh, 44px);
     margin: 0;
     padding: 4px 12px;
     border-radius: 14px;
@@ -587,8 +576,8 @@ h1 {
   .day-page-button,
   .day-cell {
     display: grid;
-    min-width: clamp(40px, 7vw, 48px);
-    min-height: clamp(40px, 6vh, 48px);
+    min-width: clamp(36px, 6vw, 44px);
+    min-height: clamp(36px, 5.2vh, 44px);
     margin: 0;
     place-items: center;
     font-size: clamp(1.2rem, 3.2vw, 1.45rem);
@@ -602,8 +591,8 @@ h1 {
 
   .lesson-toolbar .text-button {
     float: none;
-    min-width: clamp(40px, 7vw, 48px);
-    min-height: clamp(40px, 6vh, 48px);
+    min-width: clamp(36px, 6vw, 44px);
+    min-height: clamp(36px, 5.2vh, 44px);
   }
 
   .day-menu {
@@ -658,8 +647,8 @@ h1 {
     display: flex;
     justify-content: space-between;
     gap: 12px;
-    padding: 10px 18px;
-    padding: clamp(8px, 1.7vh, 14px) 18px;
+    padding: 7px 16px;
+    padding: clamp(6px, 1.2vh, 10px) 16px;
     font-size: clamp(0.95rem, 2.2vh, 1.05rem);
   }
 
@@ -670,7 +659,8 @@ h1 {
 
   .picture-frame {
     display: grid;
-    height: auto;
+    height: 128px;
+    height: clamp(96px, 22vh, 150px);
     min-height: 0;
     place-items: center;
     background:
@@ -679,23 +669,24 @@ h1 {
   }
 
   .picture-frame svg {
-    width: min(70vw, 280px);
-    max-height: 100%;
-    padding: clamp(8px, 1.8vh, 16px);
+    width: min(52vw, 154px, 22vh);
+    max-height: calc(100% - 12px);
+    padding: clamp(6px, 1.2vh, 10px);
   }
 
   .generated-word-image {
-    width: min(70vw, 260px, 42vh);
-    max-height: calc(100% - 16px);
-    margin: 8px auto;
+    width: min(52vw, 142px, 22vh);
+    max-height: calc(100% - 12px);
+    margin: 6px auto;
   }
 
   .word-block {
-    padding: clamp(12px, 2.2vh, 20px) 20px clamp(8px, 1.4vh, 12px);
+    padding: clamp(8px, 1.4vh, 12px) 18px clamp(6px, 1vh, 10px);
   }
 
   .word-block h2 {
-    font-size: clamp(4rem, 13vh, 7.3rem);
+    font-size: clamp(4.7rem, 13.5vh, 6.2rem);
+    line-height: 0.86;
     letter-spacing: -0.08em;
   }
 
@@ -709,26 +700,26 @@ h1 {
   }
 
   .parent-cue {
-    margin-top: clamp(8px, 1.5vh, 12px);
-    padding: clamp(7px, 1.2vh, 10px) 14px;
+    margin-top: clamp(6px, 1.1vh, 10px);
+    padding: clamp(6px, 1vh, 9px) 12px;
     font-size: clamp(1.05rem, 2.8vh, 1.32rem);
   }
 
   .actions {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-    padding: clamp(10px, 1.8vh, 16px) 20px clamp(14px, 2.4vh, 22px);
+    gap: 10px;
+    padding: clamp(6px, 1.1vh, 10px) 18px clamp(9px, 1.7vh, 15px);
     text-align: left;
   }
 
   .button {
     width: auto;
-    min-height: clamp(56px, 8vh, 72px);
+    min-height: clamp(48px, 7vh, 62px);
     margin: 0;
-    border-radius: 22px;
+    border-radius: 18px;
     font-size: clamp(1.15rem, 3.6vw, 1.5rem);
-    box-shadow: 5px 5px 0 #1a1a1a;
+    box-shadow: 4px 4px 0 #1a1a1a;
   }
 
   .text-button {
@@ -756,8 +747,10 @@ h1 {
 
 @media (orientation: landscape) and (min-width: 700px) {
   .app-shell {
-    width: min(100%, 430px, calc(100vh * 0.56));
-    width: min(100%, 430px, calc(100dvh * 0.56));
+    width: 100%;
+    max-width: 430px;
+    max-width: 56vh;
+    max-width: 56dvh;
   }
 }
 
@@ -775,17 +768,17 @@ h1 {
   }
 
   .picture-frame {
-    height: 180px;
+    height: 128px;
   }
 
   .picture-frame svg {
-    width: 220px;
-    max-height: 172px;
+    width: 150px;
+    max-height: 120px;
   }
 
   .generated-word-image {
-    width: min(72vw, 170px);
-    max-height: 172px;
+    width: min(58vw, 120px);
+    max-height: 120px;
   }
 
   .word-block {
@@ -793,7 +786,7 @@ h1 {
   }
 
   .word-block h2 {
-    font-size: 74px;
+    font-size: 82px;
   }
 
   .pronunciation {
@@ -827,7 +820,7 @@ h1 {
   }
 
   .button {
-    min-height: 56px;
+    min-height: 52px;
     font-size: 1.35rem;
   }
 
@@ -847,13 +840,13 @@ h1 {
   }
 
   .picture-frame {
-    height: 140px;
+    height: 108px;
   }
 
   .generated-word-image {
-    width: min(60vw, 128px);
-    max-height: calc(100% - 16px);
-    margin: 8px auto;
+    width: min(54vw, 102px);
+    max-height: calc(100% - 10px);
+    margin: 5px auto;
   }
 
   .text-button {
@@ -879,7 +872,7 @@ h1 {
   }
 
   .word-block h2 {
-    font-size: 64px;
+    font-size: 76px;
   }
 
   .parent-cue {
@@ -900,13 +893,13 @@ h1 {
   }
 
   .picture-frame {
-    height: 112px;
+    height: 86px;
   }
 
   .generated-word-image {
-    width: min(54vw, 104px);
-    max-height: calc(100% - 12px);
-    margin: 6px auto;
+    width: min(48vw, 82px);
+    max-height: calc(100% - 8px);
+    margin: 4px auto;
   }
 
   .card-topline,
@@ -916,16 +909,16 @@ h1 {
   }
 
   .word-block {
-    padding-top: 8px;
+    padding-top: 6px;
   }
 
   .actions {
-    padding-top: 8px;
-    padding-bottom: 10px;
+    padding-top: 6px;
+    padding-bottom: 8px;
   }
 
   .button {
-    min-height: 48px;
+    min-height: 44px;
   }
 }
 
@@ -972,6 +965,12 @@ h1 {
   .day-cell,
   .parent-cue {
     background: #fff;
+  }
+
+  .panel,
+  .button,
+  .day-menu {
+    box-shadow: none;
   }
 
   .picture-frame,
