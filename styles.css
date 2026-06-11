@@ -16,7 +16,6 @@ html {
 
 body {
   margin: 0;
-  min-height: 100vh;
   background: #f4f1e8;
   color: #111;
   font-family: Georgia, "Songti SC", "Noto Serif CJK SC", serif;
@@ -44,7 +43,6 @@ button {
   width: 100%;
   max-width: none;
   height: 100%;
-  min-height: 100vh;
   margin: 0;
   padding: 10px;
 }
@@ -151,8 +149,6 @@ h1 {
   -webkit-box-flex: 1;
   position: relative;
   height: 100%;
-  min-height: 92vh;
-  min-height: calc(100vh - 20px);
   overflow: visible;
 }
 
@@ -303,8 +299,7 @@ h1 {
 }
 
 .picture-frame {
-  -webkit-box-flex: 1;
-  height: 360px;
+  height: 220px;
   overflow: hidden;
   border-bottom: 3px solid #1f1f1f;
   background: #ded8c8;
@@ -313,18 +308,19 @@ h1 {
 
 .picture-frame svg {
   display: block;
-  width: 500px;
+  width: 270px;
   max-width: 96%;
-  max-height: 350px;
+  max-height: 212px;
   margin: 0 auto;
   padding: 8px;
 }
 
 .generated-word-image {
   display: block;
-  width: min(96%, 340px);
-  max-height: 340px;
-  margin: 10px auto;
+  width: 210px;
+  max-width: 92%;
+  max-height: 212px;
+  margin: 4px auto;
   object-fit: contain;
 }
 
@@ -338,13 +334,13 @@ h1 {
 }
 
 .word-block {
-  padding: 18px 18px 14px;
+  padding: 14px 16px 10px;
   text-align: center;
 }
 
 .word-block h2 {
   margin-bottom: 2px;
-  font-size: 96px;
+  font-size: 88px;
   line-height: 0.9;
   letter-spacing: -0.06em;
 }
@@ -352,37 +348,37 @@ h1 {
 .pronunciation {
   margin-bottom: 2px;
   color: #6c665b;
-  font-size: 1.7rem;
+  font-size: 1.45rem;
   font-weight: 700;
 }
 
 .meaning {
   margin-bottom: 0;
-  font-size: 1.9rem;
+  font-size: 1.7rem;
   font-weight: 900;
 }
 
 .parent-cue {
   display: inline-block;
   max-width: 100%;
-  margin: 14px 0 0;
+  margin: 8px 0 0;
   border: 3px solid #1f1f1f;
   border-radius: 16px;
-  padding: 10px 16px;
+  padding: 7px 12px;
   background: #faf7ee;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 900;
 }
 
 .actions {
-  padding: 14px 18px 18px;
+  padding: 8px 14px 12px;
   text-align: center;
 }
 
 .button {
   display: inline-block;
   width: 46%;
-  min-height: 78px;
+  min-height: 56px;
   margin: 0 1%;
   border: 3px solid #1f1f1f;
   border-radius: 18px;
@@ -390,7 +386,7 @@ h1 {
   color: #111;
   box-shadow: 4px 4px 0 #1a1a1a;
   cursor: pointer;
-  font-size: 1.8rem;
+  font-size: 1.35rem;
   font-weight: 900;
 }
 
@@ -550,7 +546,7 @@ h1 {
 
   .learning-card {
     display: grid;
-    grid-template-rows: auto auto minmax(0, 1fr) auto auto;
+    grid-template-rows: auto auto minmax(150px, 0.78fr) auto auto;
     min-height: 0;
     overflow: hidden;
   }
@@ -683,39 +679,39 @@ h1 {
   }
 
   .picture-frame svg {
-    width: min(82vw, 390px);
+    width: min(70vw, 280px);
     max-height: 100%;
     padding: clamp(8px, 1.8vh, 16px);
   }
 
   .generated-word-image {
-    width: min(82vw, 360px, 70vh);
+    width: min(70vw, 260px, 42vh);
     max-height: calc(100% - 16px);
     margin: 8px auto;
   }
 
   .word-block {
-    padding: clamp(8px, 1.8vh, 16px) 20px clamp(6px, 1.2vh, 10px);
+    padding: clamp(12px, 2.2vh, 20px) 20px clamp(8px, 1.4vh, 12px);
   }
 
   .word-block h2 {
-    font-size: clamp(3rem, 11vh, 6.5rem);
+    font-size: clamp(4rem, 13vh, 7.3rem);
     letter-spacing: -0.08em;
   }
 
   .pronunciation {
     margin-bottom: clamp(2px, 0.7vh, 4px);
-    font-size: clamp(1.05rem, 3vh, 1.55rem);
+    font-size: clamp(1.25rem, 3.4vh, 1.75rem);
   }
 
   .meaning {
-    font-size: clamp(1.2rem, 3.8vh, 1.8rem);
+    font-size: clamp(1.45rem, 4.2vh, 2rem);
   }
 
   .parent-cue {
     margin-top: clamp(8px, 1.5vh, 12px);
     padding: clamp(7px, 1.2vh, 10px) 14px;
-    font-size: clamp(0.95rem, 2.5vh, 1.2rem);
+    font-size: clamp(1.05rem, 2.8vh, 1.32rem);
   }
 
   .actions {
@@ -779,17 +775,17 @@ h1 {
   }
 
   .picture-frame {
-    height: 220px;
+    height: 180px;
   }
 
   .picture-frame svg {
-    width: 280px;
-    max-height: 210px;
+    width: 220px;
+    max-height: 172px;
   }
 
   .generated-word-image {
-    width: min(86vw, 210px);
-    max-height: 210px;
+    width: min(72vw, 170px);
+    max-height: 172px;
   }
 
   .word-block {
@@ -797,15 +793,15 @@ h1 {
   }
 
   .word-block h2 {
-    font-size: 64px;
+    font-size: 74px;
   }
 
   .pronunciation {
-    font-size: 1.25rem;
+    font-size: 1.38rem;
   }
 
   .meaning {
-    font-size: 1.4rem;
+    font-size: 1.62rem;
   }
 
   .parent-cue {
@@ -851,11 +847,11 @@ h1 {
   }
 
   .picture-frame {
-    height: 190px;
+    height: 140px;
   }
 
   .generated-word-image {
-    width: min(72vw, 170px);
+    width: min(60vw, 128px);
     max-height: calc(100% - 16px);
     margin: 8px auto;
   }
@@ -883,7 +879,7 @@ h1 {
   }
 
   .word-block h2 {
-    font-size: 54px;
+    font-size: 64px;
   }
 
   .parent-cue {
@@ -904,11 +900,11 @@ h1 {
   }
 
   .picture-frame {
-    height: 150px;
+    height: 112px;
   }
 
   .generated-word-image {
-    width: min(62vw, 134px);
+    width: min(54vw, 104px);
     max-height: calc(100% - 12px);
     margin: 6px auto;
   }
@@ -920,7 +916,7 @@ h1 {
   }
 
   .word-block {
-    padding-top: 6px;
+    padding-top: 8px;
   }
 
   .actions {
