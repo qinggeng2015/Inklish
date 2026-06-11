@@ -1764,8 +1764,11 @@ defineDetailedArt("phone remote tv", "screen");
 
 var state = {
   dayIndex: 0,
-  index: 0
+  index: 0,
+  dayMenuPageStart: 0
 };
+
+var dayPageSize = 20;
 
 var storageKey = "inklish-guide-seen";
 
@@ -1777,11 +1780,16 @@ var elements = {
   guide: byId("guide"),
   startButton: byId("start-button"),
   guideButton: byId("guide-button"),
-  title: byId("app-title"),
   dayLabel: byId("day-label"),
+  dayProgress: byId("day-progress"),
+  daySelectButton: byId("day-select-button"),
+  dayMenu: byId("day-menu"),
+  dayMenuRange: byId("day-menu-range"),
+  dayGrid: byId("day-grid"),
+  prevDayPageButton: byId("prev-day-page-button"),
+  nextDayPageButton: byId("next-day-page-button"),
   prevDayButton: byId("prev-day-button"),
   nextDayButton: byId("next-day-button"),
-  dayPicker: byId("day-picker"),
   counter: byId("lesson-counter"),
   theme: byId("lesson-theme"),
   picture: byId("picture-frame"),
@@ -1917,8 +1925,8 @@ function renderLesson() {
   var lessons = day.lessons;
   var lesson = lessons[state.index];
 
-  elements.title.innerHTML = day.title;
   elements.dayLabel.innerHTML = day.label;
+  elements.dayProgress.innerHTML = state.dayIndex + 1 + " / " + lessonDays.length;
   elements.counter.innerHTML = state.index + 1 + " / " + lessons.length;
   elements.theme.innerHTML = lesson.theme;
   renderPicture(lesson);
@@ -1928,53 +1936,46 @@ function renderLesson() {
   elements.parentCue.innerHTML = lesson.sentence;
 }
 
-function getVisibleDayIndexes() {
-  var maxVisibleDays = 3;
-  var visibleCount = Math.min(maxVisibleDays, lessonDays.length);
-  var halfWindow = Math.floor(visibleCount / 2);
-  var maxStart = lessonDays.length - visibleCount;
-  var start = Math.min(Math.max(state.dayIndex - halfWindow, 0), maxStart);
-  var indexes = [];
-  var index;
-
-  for (index = 0; index < visibleCount; index += 1) {
-    indexes.push(start + index);
-  }
-
-  return indexes;
+function getDayPageStart(dayIndex) {
+  return Math.floor(dayIndex / dayPageSize) * dayPageSize;
 }
 
-function renderDayPicker() {
-  var indexes = getVisibleDayIndexes();
+function renderDayMenu() {
+  var start = state.dayMenuPageStart;
+  var end = Math.min(start + dayPageSize, lessonDays.length);
   var html = [];
   var index;
-  var dayIndex;
   var day;
   var isCurrent;
-  var marker;
 
   elements.prevDayButton.disabled = state.dayIndex === 0;
   elements.nextDayButton.disabled = state.dayIndex === lessonDays.length - 1;
+  elements.prevDayPageButton.disabled = start === 0;
+  elements.nextDayPageButton.disabled = end >= lessonDays.length;
+  elements.dayMenuRange.innerHTML = "Day " + (start + 1) + " - " + end;
 
-  for (index = 0; index < indexes.length; index += 1) {
-    dayIndex = indexes[index];
-    day = lessonDays[dayIndex];
-    isCurrent = dayIndex === state.dayIndex;
-    marker = isCurrent ? "●" : "○";
+  for (index = start; index < end; index += 1) {
+    day = lessonDays[index];
+    isCurrent = index === state.dayIndex;
     html.push(
-      '<button class="day-button" type="button" data-day-index="' +
-        dayIndex +
+      '<button class="day-cell" type="button" role="option" data-day-index="' +
+        index +
         '" aria-label="' +
         day.label +
-        '" aria-current="' +
+        '" aria-selected="' +
         isCurrent +
         '">' +
-        marker +
+        index + 1 +
         "</button>"
     );
   }
 
-  elements.dayPicker.innerHTML = html.join("");
+  elements.dayGrid.innerHTML = html.join("");
+}
+
+function renderDayControls() {
+  state.dayMenuPageStart = getDayPageStart(state.dayIndex);
+  renderDayMenu();
 }
 
 function selectDay(dayIndex) {
@@ -1984,12 +1985,45 @@ function selectDay(dayIndex) {
 
   state.dayIndex = dayIndex;
   state.index = 0;
-  renderDayPicker();
+  renderDayControls();
   renderLesson();
 }
 
+function isDayMenuOpen() {
+  return elements.dayMenu.getAttribute("hidden") === null;
+}
+
+function openDayMenu() {
+  state.dayMenuPageStart = getDayPageStart(state.dayIndex);
+  renderDayMenu();
+  elements.dayMenu.removeAttribute("hidden");
+  elements.daySelectButton.setAttribute("aria-expanded", "true");
+}
+
+function closeDayMenu() {
+  elements.dayMenu.setAttribute("hidden", "hidden");
+  elements.daySelectButton.setAttribute("aria-expanded", "false");
+}
+
+function toggleDayMenu() {
+  if (isDayMenuOpen()) {
+    closeDayMenu();
+    return;
+  }
+
+  openDayMenu();
+}
+
+function changeDayMenuPage(direction) {
+  var maxStart = Math.floor((lessonDays.length - 1) / dayPageSize) * dayPageSize;
+  var nextStart = state.dayMenuPageStart + direction * dayPageSize;
+
+  state.dayMenuPageStart = Math.min(Math.max(nextStart, 0), maxStart);
+  renderDayMenu();
+}
+
 function findDayButton(target) {
-  while (target && target !== elements.dayPicker) {
+  while (target && target !== elements.dayGrid) {
     if (target.getAttribute && target.getAttribute("data-day-index") !== null) {
       return target;
     }
@@ -2002,8 +2036,9 @@ function findDayButton(target) {
 
 on(elements.startButton, "click", closeGuide);
 on(elements.guideButton, "click", openGuide);
+on(elements.daySelectButton, "click", toggleDayMenu);
 
-on(elements.dayPicker, "click", function (event) {
+on(elements.dayGrid, "click", function (event) {
   var button = findDayButton(event.target || event.srcElement);
 
   if (!button) {
@@ -2011,6 +2046,7 @@ on(elements.dayPicker, "click", function (event) {
   }
 
   selectDay(parseInt(button.getAttribute("data-day-index"), 10));
+  closeDayMenu();
 });
 
 on(elements.prevDayButton, "click", function () {
@@ -2019,6 +2055,14 @@ on(elements.prevDayButton, "click", function () {
 
 on(elements.nextDayButton, "click", function () {
   selectDay(state.dayIndex + 1);
+});
+
+on(elements.prevDayPageButton, "click", function () {
+  changeDayMenuPage(-1);
+});
+
+on(elements.nextDayPageButton, "click", function () {
+  changeDayMenuPage(1);
 });
 
 on(elements.prevButton, "click", function () {
@@ -2035,7 +2079,33 @@ on(elements.nextButton, "click", function () {
   renderLesson();
 });
 
-renderDayPicker();
+on(document, "click", function (event) {
+  var target = event.target || event.srcElement;
+
+  if (!isDayMenuOpen()) {
+    return;
+  }
+
+  while (target) {
+    if (target === elements.dayMenu || target === elements.daySelectButton) {
+      return;
+    }
+
+    target = target.parentNode;
+  }
+
+  closeDayMenu();
+});
+
+on(document, "keydown", function (event) {
+  event = event || window.event;
+
+  if (event.key === "Escape" || event.keyCode === 27) {
+    closeDayMenu();
+  }
+});
+
+renderDayControls();
 renderLesson();
 
 if (!hasSeenGuide()) {

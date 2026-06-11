@@ -46,27 +46,61 @@
       </button>
     </dialog>
 
-    <main class="app-shell" aria-labelledby="app-title">
-      <header class="compact-header">
-        <div>
-          <p class="eyebrow">Inklish</p>
-          <h1 id="app-title">Today</h1>
-        </div>
-        <button class="text-button" id="guide-button" type="button" aria-label="玩法">
-          ?
-        </button>
-      </header>
-
+    <main class="app-shell" aria-label="Inklish">
       <section class="learning-card panel" aria-live="polite">
-        <div class="day-switcher" aria-label="day navigation">
+        <div class="lesson-toolbar" aria-label="day navigation">
+          <button
+            class="day-select-button"
+            id="day-select-button"
+            type="button"
+            aria-haspopup="dialog"
+            aria-expanded="false"
+            aria-controls="day-menu"
+          >
+            <span class="day-title" id="day-label">Day 1</span>
+            <span class="day-progress" id="day-progress">1 / 100</span>
+          </button>
           <button class="day-arrow" id="prev-day-button" type="button" aria-label="上一天">
             ‹
           </button>
-          <div class="day-picker" id="day-picker"></div>
           <button class="day-arrow" id="next-day-button" type="button" aria-label="下一天">
             ›
           </button>
-          <span id="day-label">今天</span>
+          <button class="text-button" id="guide-button" type="button" aria-label="玩法">
+            ?
+          </button>
+
+          <div
+            class="day-menu panel"
+            id="day-menu"
+            role="dialog"
+            aria-label="选择学习日"
+            hidden
+          >
+            <div class="day-menu-head">
+              <button
+                class="day-page-button"
+                id="prev-day-page-button"
+                type="button"
+                aria-label="上一组学习日"
+              >
+                ‹
+              </button>
+              <div class="day-menu-title">
+                <p class="tiny-label">Days</p>
+                <p class="day-menu-range" id="day-menu-range">Day 1 - 20</p>
+              </div>
+              <button
+                class="day-page-button"
+                id="next-day-page-button"
+                type="button"
+                aria-label="下一组学习日"
+              >
+                ›
+              </button>
+            </div>
+            <div class="day-grid" id="day-grid" role="listbox" aria-label="选择学习日"></div>
+          </div>
         </div>
 
         <div class="card-topline">
