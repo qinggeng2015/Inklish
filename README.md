@@ -24,6 +24,21 @@ python3 -m http.server 8080
 
 然后访问 `http://localhost:8080`。
 
+## GitHub CI/CD
+
+项目已配置 GitHub Actions 自动部署到 Cloudflare Pages：`.github/workflows/deploy.yml`。
+
+仓库需要配置这些 GitHub Secrets：
+
+- `CLOUDFLARE_API_TOKEN`: Cloudflare API Token，需要有 Pages 项目创建和部署权限。
+- `CLOUDFLARE_ACCOUNT_ID`: Cloudflare Account ID。
+
+可选配置 GitHub Repository Variable：
+
+- `CLOUDFLARE_PAGES_PROJECT_NAME`: Cloudflare Pages 项目名，默认是 `inklish`。
+
+推送到 `main` 分支时会自动打包 `index.html`、`styles.css`、`app.js` 和 `assets/`，并部署到 Cloudflare Pages。Pull Request 会创建预览部署。
+
 ## 文件
 
 - `index.html`: 页面结构与学习内容容器。
