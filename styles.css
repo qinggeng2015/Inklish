@@ -6,6 +6,7 @@
 
 html,
 body {
+  height: 100%;
   min-height: 100%;
 }
 
@@ -15,6 +16,7 @@ html {
 
 body {
   margin: 0;
+  min-height: 100vh;
   background: #f4f1e8;
   color: #111;
   font-family: Georgia, "Songti SC", "Noto Serif CJK SC", serif;
@@ -37,8 +39,12 @@ button {
 }
 
 .app-shell {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
   width: 100%;
   max-width: none;
+  height: 100%;
+  min-height: 100vh;
   margin: 0;
   padding: 10px;
 }
@@ -53,15 +59,20 @@ button {
 .guide {
   position: fixed;
   z-index: 10;
-  top: 8px;
-  right: 8px;
-  left: 8px;
+  top: 50%;
+  right: auto;
+  bottom: auto;
+  left: 50%;
+  width: calc(100% - 28px);
   max-width: 720px;
-  max-height: 760px;
-  margin: 0 auto;
+  max-height: 92vh;
+  max-height: calc(100vh - 28px);
+  margin: 0;
   padding: 18px;
   overflow: auto;
   color: #111;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .guide[open] {
@@ -135,7 +146,13 @@ h1 {
 }
 
 .learning-card {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-flex: 1;
   position: relative;
+  height: 100%;
+  min-height: 92vh;
+  min-height: calc(100vh - 20px);
   overflow: visible;
 }
 
@@ -286,6 +303,7 @@ h1 {
 }
 
 .picture-frame {
+  -webkit-box-flex: 1;
   height: 360px;
   overflow: hidden;
   border-bottom: 3px solid #1f1f1f;
