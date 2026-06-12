@@ -2113,14 +2113,18 @@ function fitLessonToViewport() {
   var availableHeight;
   var cardHeight;
   var basePictureHeight;
+  var baseWordBlockHeight;
   var baseWordPaddingBottom;
   var baseWordPaddingTop;
+  var contentHeight;
   var extraHeight;
+  var extraWordHeight;
   var fixedContentHeight;
+  var maxPictureHeight;
   var naturalCardHeight;
   var targetPictureHeight;
-  var maxPictureHeight;
   var minPictureHeight;
+  var targetWordHeight;
 
   if (!shell || !card || !viewportHeight || viewportHeight < 360) {
     revealShell();
@@ -2131,6 +2135,7 @@ function fitLessonToViewport() {
   elements.picture.style.height = "";
 
   if (wordBlock) {
+    wordBlock.style.minHeight = "";
     wordBlock.style.paddingTop = "";
     wordBlock.style.paddingBottom = "";
   }
@@ -2153,21 +2158,27 @@ function fitLessonToViewport() {
   availableHeight = viewportHeight - shellTop - 8;
   cardHeight = card.offsetHeight;
   basePictureHeight = elements.picture.offsetHeight;
+  baseWordBlockHeight = wordBlock ? wordBlock.offsetHeight : 0;
 
-  if (!cardHeight || !basePictureHeight || availableHeight <= 0) {
+  if (!cardHeight || !basePictureHeight || !baseWordBlockHeight || availableHeight <= 0) {
     revealShell();
     return;
   }
 
-  fixedContentHeight = cardHeight - basePictureHeight;
-  maxPictureHeight = Math.floor(viewportHeight * 0.27);
-  minPictureHeight = viewportHeight < 560 ? 56 : 84;
-  targetPictureHeight = Math.min(basePictureHeight, maxPictureHeight);
-  targetPictureHeight = Math.min(targetPictureHeight, availableHeight - fixedContentHeight);
-  targetPictureHeight = Math.max(
-    minPictureHeight,
-    targetPictureHeight
-  );
+  fixedContentHeight = cardHeight - basePictureHeight - baseWordBlockHeight;
+  contentHeight = availableHeight - fixedContentHeight;
+  maxPictureHeight = contentHeight - baseWordBlockHeight;
+  minPictureHeight = viewportHeight < 560 ? 56 : 96;
+  targetPictureHeight = Math.floor(contentHeight * 0.4);
+
+  if (maxPictureHeight >= minPictureHeight) {
+    targetPictureHeight = Math.max(minPictureHeight, targetPictureHeight);
+    targetPictureHeight = Math.min(maxPictureHeight, targetPictureHeight);
+  } else {
+    targetPictureHeight = Math.max(1, Math.min(targetPictureHeight, maxPictureHeight));
+  }
+
+  targetWordHeight = contentHeight - targetPictureHeight;
 
   if (Math.abs(targetPictureHeight - basePictureHeight) > 3) {
     elements.picture.style.height = targetPictureHeight + "px";
@@ -2177,15 +2188,21 @@ function fitLessonToViewport() {
     fitMediaInsidePicture(media);
   }
 
+  extraWordHeight = targetWordHeight - baseWordBlockHeight;
+
+  if (wordBlock && extraWordHeight > 4) {
+    baseWordPaddingTop = elementPixelStyle(wordBlock, "paddingTop", 12);
+    baseWordPaddingBottom = elementPixelStyle(wordBlock, "paddingBottom", 10);
+    wordBlock.style.minHeight = Math.floor(targetWordHeight) + "px";
+    wordBlock.style.paddingTop = Math.floor(baseWordPaddingTop + extraWordHeight * 0.36) + "px";
+    wordBlock.style.paddingBottom = Math.floor(baseWordPaddingBottom + extraWordHeight * 0.64) + "px";
+  }
+
   naturalCardHeight = card.offsetHeight;
   extraHeight = availableHeight - naturalCardHeight;
 
-  if (wordBlock && extraHeight > 4) {
-    baseWordPaddingTop = elementPixelStyle(wordBlock, "paddingTop", 12);
-    baseWordPaddingBottom = elementPixelStyle(wordBlock, "paddingBottom", 10);
+  if (extraHeight > 4) {
     card.style.minHeight = availableHeight + "px";
-    wordBlock.style.paddingTop = Math.floor(baseWordPaddingTop + extraHeight * 0.36) + "px";
-    wordBlock.style.paddingBottom = Math.floor(baseWordPaddingBottom + extraHeight * 0.64) + "px";
   }
 
   revealShell();
