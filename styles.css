@@ -23,6 +23,10 @@ body {
   -webkit-text-size-adjust: 100%;
 }
 
+body.is-fitting .app-shell {
+  visibility: hidden;
+}
+
 main,
 section {
   display: block;
@@ -292,6 +296,8 @@ h1 {
 
 .picture-frame {
   height: 190px;
+  height: calc(100vh - 426px);
+  min-height: 190px;
   overflow: hidden;
   border-bottom: 3px solid #1f1f1f;
   background: #ded8c8;
@@ -302,7 +308,7 @@ h1 {
   display: block;
   width: 224px;
   max-width: 96%;
-  max-height: 182px;
+  max-height: calc(100% - 8px);
   margin: 0 auto;
   padding: 8px;
 }
@@ -311,7 +317,7 @@ h1 {
   display: block;
   width: 182px;
   max-width: 92%;
-  max-height: 182px;
+  max-height: calc(100% - 8px);
   margin: 4px auto;
   object-fit: contain;
 }
@@ -660,8 +666,9 @@ h1 {
   .picture-frame {
     display: grid;
     height: 190px;
-    height: clamp(150px, 31vh, 230px);
-    min-height: 0;
+    height: calc(100vh - 426px);
+    height: calc(100dvh - 426px);
+    min-height: 190px;
     place-items: center;
     background:
       linear-gradient(135deg, rgba(17, 17, 17, 0.08) 25%, transparent 25%) 0 0 / 24px 24px,
@@ -669,14 +676,14 @@ h1 {
   }
 
   .picture-frame svg {
-    width: min(72vw, 220px, 31vh);
-    max-height: calc(100% - 12px);
+    width: min(72vw, 260px, 54vh);
+    max-height: calc(100% - 8px);
     padding: clamp(6px, 1.2vh, 10px);
   }
 
   .generated-word-image {
-    width: min(72vw, 210px, 31vh);
-    max-height: calc(100% - 12px);
+    width: min(72vw, 250px, 54vh);
+    max-height: calc(100% - 8px);
     margin: 6px auto;
   }
 
@@ -768,7 +775,9 @@ h1 {
   }
 
   .picture-frame {
-    height: 178px;
+    height: calc(100vh - 418px);
+    height: calc(100dvh - 418px);
+    min-height: 178px;
   }
 
   .picture-frame svg {
@@ -840,7 +849,9 @@ h1 {
   }
 
   .picture-frame {
-    height: 150px;
+    height: calc(100vh - 390px);
+    height: calc(100dvh - 390px);
+    min-height: 150px;
   }
 
   .generated-word-image {
@@ -893,7 +904,9 @@ h1 {
   }
 
   .picture-frame {
-    height: 118px;
+    height: calc(100vh - 366px);
+    height: calc(100dvh - 366px);
+    min-height: 118px;
   }
 
   .generated-word-image {

@@ -1775,7 +1775,6 @@ var state = {
 };
 
 var dayPageSize = 20;
-var viewportFitTimer = null;
 
 var storageKey = "inklish-guide-seen";
 
@@ -1912,9 +1911,9 @@ function renderPicture(lesson) {
     }
 
     elements.picture.innerHTML = renderArt(lesson);
-    scheduleViewportFit();
+    fitLessonToViewport();
   };
-  image.onload = scheduleViewportFit;
+  image.onload = fitLessonToViewport;
   image.src = "assets/word-images/" + encodeURIComponent(lesson.art) + ".png";
 
   elements.picture.innerHTML = "";
@@ -1943,7 +1942,7 @@ function renderLesson() {
   elements.pronunciation.innerHTML = lesson.pronunciation;
   elements.meaning.innerHTML = lesson.meaning;
   elements.parentCue.innerHTML = lesson.sentence;
-  scheduleViewportFit();
+  fitLessonToViewport();
 }
 
 function getViewportHeight() {
@@ -1974,6 +1973,10 @@ function findPictureMedia() {
   return elements.picture.getElementsByTagName("svg")[0];
 }
 
+function revealShell() {
+  document.body.className = document.body.className.replace(/\bis-fitting\b/g, "").replace(/\s+/g, " ");
+}
+
 function fitLessonToViewport() {
   var shell = document.getElementsByTagName("main")[0];
   var media = findPictureMedia();
@@ -1989,6 +1992,7 @@ function fitLessonToViewport() {
   var mediaSize;
 
   if (!shell || !viewportHeight || viewportHeight < 360) {
+    revealShell();
     return;
   }
 
@@ -2007,12 +2011,13 @@ function fitLessonToViewport() {
     }
   }
 
-  availableHeight = viewportHeight - shellTop - 2;
+  availableHeight = viewportHeight - shellTop;
   shellHeight = shell.offsetHeight;
   basePictureHeight = elements.picture.offsetHeight;
   targetPictureHeight = basePictureHeight;
 
   if (!shellHeight || !basePictureHeight || availableHeight <= 0) {
+    revealShell();
     return;
   }
 
@@ -2022,7 +2027,7 @@ function fitLessonToViewport() {
     targetPictureHeight -= shellHeight - availableHeight + 4;
   }
 
-  maxPictureHeight = Math.floor(viewportHeight * 0.42);
+  maxPictureHeight = Math.floor(viewportHeight * 0.62);
   minPictureHeight = viewportHeight < 560 ? 104 : 140;
   targetPictureHeight = Math.max(
     minPictureHeight,
@@ -2043,22 +2048,8 @@ function fitLessonToViewport() {
     media.style.width = mediaSize + "px";
     media.style.maxHeight = targetPictureHeight - 10 + "px";
   }
-}
 
-function scheduleViewportFit() {
-  if (viewportFitTimer && window.clearTimeout) {
-    window.clearTimeout(viewportFitTimer);
-  }
-
-  if (window.setTimeout) {
-    viewportFitTimer = window.setTimeout(function () {
-      viewportFitTimer = null;
-      fitLessonToViewport();
-    }, 0);
-    return;
-  }
-
-  fitLessonToViewport();
+  revealShell();
 }
 
 function getDayPageStart(dayIndex) {
@@ -2230,7 +2221,7 @@ on(document, "keydown", function (event) {
   }
 });
 
-on(window, "resize", scheduleViewportFit);
+on(window, "resize", fitLessonToViewport);
 
 renderDayControls();
 renderLesson();
