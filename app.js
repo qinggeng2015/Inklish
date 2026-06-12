@@ -2120,7 +2120,6 @@ function fitLessonToViewport() {
   var extraHeight;
   var extraWordHeight;
   var fixedContentHeight;
-  var maxPictureHeight;
   var naturalCardHeight;
   var targetPictureHeight;
   var minPictureHeight;
@@ -2167,16 +2166,10 @@ function fitLessonToViewport() {
 
   fixedContentHeight = cardHeight - basePictureHeight - baseWordBlockHeight;
   contentHeight = availableHeight - fixedContentHeight;
-  maxPictureHeight = contentHeight - baseWordBlockHeight;
   minPictureHeight = viewportHeight < 560 ? 56 : 96;
   targetPictureHeight = Math.floor(contentHeight * 0.4);
-
-  if (maxPictureHeight >= minPictureHeight) {
-    targetPictureHeight = Math.max(minPictureHeight, targetPictureHeight);
-    targetPictureHeight = Math.min(maxPictureHeight, targetPictureHeight);
-  } else {
-    targetPictureHeight = Math.max(1, Math.min(targetPictureHeight, maxPictureHeight));
-  }
+  targetPictureHeight = Math.max(minPictureHeight, targetPictureHeight);
+  targetPictureHeight = Math.min(targetPictureHeight, Math.max(1, contentHeight - 1));
 
   targetWordHeight = contentHeight - targetPictureHeight;
 

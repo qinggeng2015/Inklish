@@ -296,7 +296,7 @@ h1 {
 }
 
 .picture-frame {
-  height: 116px;
+  height: 220px;
   height: calc(100vh - 512px);
   min-height: 84px;
   overflow: hidden;
@@ -672,7 +672,7 @@ h1 {
 
   .picture-frame {
     display: grid;
-    height: 116px;
+    height: 220px;
     height: calc(100vh - 512px);
     height: calc(100dvh - 512px);
     min-height: 84px;
