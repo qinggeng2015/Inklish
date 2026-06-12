@@ -295,9 +295,9 @@ h1 {
 }
 
 .picture-frame {
-  height: 150px;
-  height: calc(100vh - 478px);
-  min-height: 126px;
+  height: 108px;
+  height: calc(100vh - 520px);
+  min-height: 72px;
   overflow: hidden;
   border-bottom: 3px solid #1f1f1f;
   background: #ded8c8;
@@ -306,20 +306,22 @@ h1 {
 
 .picture-frame svg {
   display: block;
-  width: 182px;
-  max-width: 96%;
-  max-height: calc(100% - 8px);
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   margin: 0 auto;
-  padding: 8px;
+  padding: 0;
 }
 
 .generated-word-image {
   display: block;
-  width: 146px;
-  max-width: 92%;
-  max-height: calc(100% - 8px);
-  margin: 4px auto;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+  object-fit: fill;
 }
 
 .picture-frame path,
@@ -670,10 +672,10 @@ h1 {
 
   .picture-frame {
     display: grid;
-    height: 150px;
-    height: calc(100vh - 478px);
-    height: calc(100dvh - 478px);
-    min-height: 126px;
+    height: 108px;
+    height: calc(100vh - 520px);
+    height: calc(100dvh - 520px);
+    min-height: 72px;
     place-items: center;
     background:
       linear-gradient(135deg, rgba(17, 17, 17, 0.08) 25%, transparent 25%) 0 0 / 24px 24px,
@@ -681,15 +683,18 @@ h1 {
   }
 
   .picture-frame svg {
-    width: min(62vw, 210px, 42vh);
-    max-height: calc(100% - 8px);
-    padding: clamp(6px, 1.2vh, 10px);
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    padding: 0;
   }
 
   .generated-word-image {
-    width: min(62vw, 200px, 42vh);
-    max-height: calc(100% - 8px);
-    margin: 6px auto;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    margin: 0 auto;
+    object-fit: fill;
   }
 
   .word-block {
@@ -785,19 +790,21 @@ h1 {
   }
 
   .picture-frame {
-    height: calc(100vh - 480px);
-    height: calc(100dvh - 480px);
-    min-height: 126px;
+    height: calc(100vh - 520px);
+    height: calc(100dvh - 520px);
+    min-height: 72px;
   }
 
   .picture-frame svg {
-    width: 178px;
-    max-height: calc(100% - 8px);
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
   }
 
   .generated-word-image {
-    width: min(62vw, 142px);
-    max-height: calc(100% - 8px);
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
   }
 
   .word-block {
@@ -863,15 +870,16 @@ h1 {
   }
 
   .picture-frame {
-    height: calc(100vh - 456px);
-    height: calc(100dvh - 456px);
-    min-height: 96px;
+    height: calc(100vh - 498px);
+    height: calc(100dvh - 498px);
+    min-height: 58px;
   }
 
   .generated-word-image {
-    width: min(58vw, 118px);
-    max-height: calc(100% - 8px);
-    margin: 4px auto;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    margin: 0 auto;
   }
 
   .text-button {
@@ -922,15 +930,16 @@ h1 {
   }
 
   .picture-frame {
-    height: calc(100vh - 434px);
-    height: calc(100dvh - 434px);
-    min-height: 76px;
+    height: calc(100vh - 476px);
+    height: calc(100dvh - 476px);
+    min-height: 48px;
   }
 
   .generated-word-image {
-    width: min(52vw, 92px);
-    max-height: calc(100% - 8px);
-    margin: 4px auto;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    margin: 0 auto;
   }
 
   .card-topline,

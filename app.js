@@ -2024,8 +2024,8 @@ function fitLessonToViewport() {
 
   fixedContentHeight = shellHeight - basePictureHeight;
   targetPictureHeight = availableHeight - fixedContentHeight;
-  maxPictureHeight = Math.floor(viewportHeight * 0.42);
-  minPictureHeight = viewportHeight < 560 ? 64 : 96;
+  maxPictureHeight = Math.floor(viewportHeight * 0.34);
+  minPictureHeight = viewportHeight < 560 ? 48 : 72;
   targetPictureHeight = Math.max(
     minPictureHeight,
     Math.min(maxPictureHeight, targetPictureHeight)
@@ -2036,14 +2036,10 @@ function fitLessonToViewport() {
   }
 
   if (media && viewportWidth) {
-    mediaSize = Math.min(
-      targetPictureHeight - 14,
-      Math.floor(viewportWidth * 0.62),
-      220
-    );
-    mediaSize = Math.max(72, mediaSize);
-    media.style.width = mediaSize + "px";
-    media.style.maxHeight = targetPictureHeight - 12 + "px";
+    mediaSize = Math.max(48, targetPictureHeight);
+    media.style.width = "100%";
+    media.style.height = mediaSize + "px";
+    media.style.maxHeight = mediaSize + "px";
   }
 
   revealShell();
