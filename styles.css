@@ -7,6 +7,7 @@
 html,
 body {
   min-height: 100%;
+  overflow: hidden;
 }
 
 html {
@@ -306,21 +307,21 @@ h1 {
 
 .picture-frame svg {
   display: block;
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
   max-width: 100%;
-  max-height: none;
+  max-height: 100%;
   margin: 0 auto;
   padding: 0;
 }
 
 .generated-word-image {
   display: block;
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
   max-width: 100%;
-  max-height: none;
-  margin: -18% auto 0;
+  max-height: 100%;
+  margin: 0 auto;
 }
 
 .picture-frame path,
@@ -457,7 +458,7 @@ h1 {
 @supports (display: grid) {
   html {
     min-height: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
     background:
       radial-gradient(circle at 14px 14px, rgba(17, 17, 17, 0.11) 1px, transparent 1px),
       linear-gradient(135deg, #f8f5ec 0%, #ebe5d5 100%);
@@ -466,7 +467,7 @@ h1 {
 
   body {
     min-height: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
   }
 
   .app-shell {
@@ -682,17 +683,19 @@ h1 {
   }
 
   .picture-frame svg {
-    width: 100%;
-    height: auto;
-    max-height: none;
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
     padding: 0;
   }
 
   .generated-word-image {
-    width: 100%;
-    height: auto;
-    max-height: none;
-    margin: -18% auto 0;
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
   }
 
   .word-block {
@@ -794,15 +797,18 @@ h1 {
   }
 
   .picture-frame svg {
-    width: 100%;
-    height: auto;
-    max-height: none;
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
   }
 
   .generated-word-image {
-    width: 100%;
-    height: auto;
-    max-height: none;
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
   }
 
   .word-block {
@@ -874,10 +880,11 @@ h1 {
   }
 
   .generated-word-image {
-    width: 100%;
-    height: auto;
-    max-height: none;
-    margin: -18% auto 0;
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
   }
 
   .text-button {
@@ -934,10 +941,11 @@ h1 {
   }
 
   .generated-word-image {
-    width: 100%;
-    height: auto;
-    max-height: none;
-    margin: -18% auto 0;
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
   }
 
   .card-topline,

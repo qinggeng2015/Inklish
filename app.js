@@ -1985,6 +1985,94 @@ function findPictureMedia() {
   return elements.picture.getElementsByTagName("svg")[0];
 }
 
+function getSvgViewBoxSize(media) {
+  var parts;
+  var viewBox;
+
+  if (!media.getAttribute) {
+    return null;
+  }
+
+  viewBox = media.getAttribute("viewBox");
+
+  if (!viewBox) {
+    return null;
+  }
+
+  parts = viewBox.replace(/,/g, " ").split(/\s+/);
+
+  if (parts.length < 4) {
+    return null;
+  }
+
+  return {
+    width: pixelValue(parts[2], 0),
+    height: pixelValue(parts[3], 0)
+  };
+}
+
+function getMediaNaturalSize(media) {
+  var svgSize;
+
+  if (!media) {
+    return null;
+  }
+
+  if (media.naturalWidth && media.naturalHeight) {
+    return {
+      width: media.naturalWidth,
+      height: media.naturalHeight
+    };
+  }
+
+  svgSize = getSvgViewBoxSize(media);
+
+  if (svgSize && svgSize.width && svgSize.height) {
+    return svgSize;
+  }
+
+  return null;
+}
+
+function fitMediaInsidePicture(media) {
+  var frameHeight = elements.picture.clientHeight || elements.picture.offsetHeight;
+  var frameWidth = elements.picture.clientWidth || elements.picture.offsetWidth;
+  var mediaRatio;
+  var naturalSize = getMediaNaturalSize(media);
+  var targetHeight;
+  var targetWidth;
+
+  if (!media || !frameWidth || !frameHeight) {
+    return;
+  }
+
+  media.style.marginTop = "0";
+  media.style.maxWidth = "100%";
+  media.style.maxHeight = "100%";
+
+  if (!naturalSize || !naturalSize.width || !naturalSize.height) {
+    media.style.width = frameHeight + "px";
+    media.style.height = frameHeight + "px";
+    return;
+  }
+
+  mediaRatio = naturalSize.width / naturalSize.height;
+  targetWidth = frameWidth;
+  targetHeight = targetWidth / mediaRatio;
+
+  if (targetHeight > frameHeight) {
+    targetHeight = frameHeight;
+    targetWidth = targetHeight * mediaRatio;
+  }
+
+  targetWidth = Math.max(1, Math.floor(targetWidth));
+  targetHeight = Math.max(1, Math.floor(targetHeight));
+
+  media.style.width = targetWidth + "px";
+  media.style.height = targetHeight + "px";
+  media.style.marginTop = Math.max(0, Math.floor((frameHeight - targetHeight) / 2)) + "px";
+}
+
 function revealShell() {
   document.body.className = document.body.className.replace(/\bis-fitting\b/g, "").replace(/\s+/g, " ");
 }
@@ -2050,6 +2138,7 @@ function fitLessonToViewport() {
   if (media) {
     media.style.width = "";
     media.style.height = "";
+    media.style.maxWidth = "";
     media.style.maxHeight = "";
   }
 
@@ -2085,9 +2174,7 @@ function fitLessonToViewport() {
   }
 
   if (media && viewportWidth) {
-    media.style.width = "100%";
-    media.style.height = "auto";
-    media.style.maxHeight = "none";
+    fitMediaInsidePicture(media);
   }
 
   naturalCardHeight = card.offsetHeight;
