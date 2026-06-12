@@ -1874,7 +1874,7 @@ function renderArt(lesson) {
 
 function wrapLineArt(content, label) {
   return [
-    '<svg viewBox="0 0 280 220" role="img" aria-label="',
+    '<svg viewBox="0 0 280 220" preserveAspectRatio="xMidYMid slice" role="img" aria-label="',
     escapeHtml(label),
     ' drawing">',
     content,
@@ -1884,7 +1884,7 @@ function wrapLineArt(content, label) {
 
 function renderWordCard(lesson) {
   return [
-    '<svg viewBox="0 0 280 220" role="img" aria-label="word card">',
+    '<svg viewBox="0 0 280 220" preserveAspectRatio="xMidYMid slice" role="img" aria-label="word card">',
     '<rect x="38" y="28" width="204" height="164" rx="24" fill="#f7f3e8" stroke="#111" stroke-width="8"/>',
     '<path d="M64 70 H216 M64 150 H216" fill="none" stroke="#111" stroke-width="5" stroke-linecap="round"/>',
     '<circle cx="70" cy="110" r="11" fill="#111"/>',
@@ -1991,7 +1991,6 @@ function fitLessonToViewport() {
   var targetPictureHeight;
   var maxPictureHeight;
   var minPictureHeight;
-  var mediaSize;
 
   if (!shell || !viewportHeight || viewportHeight < 360) {
     revealShell();
@@ -2036,10 +2035,9 @@ function fitLessonToViewport() {
   }
 
   if (media && viewportWidth) {
-    mediaSize = Math.max(48, targetPictureHeight);
     media.style.width = "100%";
-    media.style.height = mediaSize + "px";
-    media.style.maxHeight = mediaSize + "px";
+    media.style.height = "100%";
+    media.style.maxHeight = "100%";
   }
 
   revealShell();
