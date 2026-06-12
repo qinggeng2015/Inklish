@@ -2001,6 +2001,7 @@ function fitLessonToViewport() {
 
   if (media) {
     media.style.width = "";
+    media.style.height = "";
     media.style.maxHeight = "";
   }
 
@@ -2036,8 +2037,8 @@ function fitLessonToViewport() {
 
   if (media && viewportWidth) {
     media.style.width = "100%";
-    media.style.height = "100%";
-    media.style.maxHeight = "100%";
+    media.style.height = "auto";
+    media.style.maxHeight = "none";
   }
 
   revealShell();

@@ -307,9 +307,9 @@ h1 {
 .picture-frame svg {
   display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
   max-width: 100%;
-  max-height: 100%;
+  max-height: none;
   margin: 0 auto;
   padding: 0;
 }
@@ -317,11 +317,10 @@ h1 {
 .generated-word-image {
   display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
   max-width: 100%;
-  max-height: 100%;
-  margin: 0 auto;
-  object-fit: cover;
+  max-height: none;
+  margin: -26% auto 0;
 }
 
 .picture-frame path,
@@ -684,17 +683,16 @@ h1 {
 
   .picture-frame svg {
     width: 100%;
-    height: 100%;
-    max-height: 100%;
+    height: auto;
+    max-height: none;
     padding: 0;
   }
 
   .generated-word-image {
     width: 100%;
-    height: 100%;
-    max-height: 100%;
-    margin: 0 auto;
-    object-fit: cover;
+    height: auto;
+    max-height: none;
+    margin: -26% auto 0;
   }
 
   .word-block {
@@ -797,14 +795,14 @@ h1 {
 
   .picture-frame svg {
     width: 100%;
-    height: 100%;
-    max-height: 100%;
+    height: auto;
+    max-height: none;
   }
 
   .generated-word-image {
     width: 100%;
-    height: 100%;
-    max-height: 100%;
+    height: auto;
+    max-height: none;
   }
 
   .word-block {
@@ -877,9 +875,9 @@ h1 {
 
   .generated-word-image {
     width: 100%;
-    height: 100%;
-    max-height: 100%;
-    margin: 0 auto;
+    height: auto;
+    max-height: none;
+    margin: -26% auto 0;
   }
 
   .text-button {
@@ -937,9 +935,9 @@ h1 {
 
   .generated-word-image {
     width: 100%;
-    height: 100%;
-    max-height: 100%;
-    margin: 0 auto;
+    height: auto;
+    max-height: none;
+    margin: -26% auto 0;
   }
 
   .card-topline,
