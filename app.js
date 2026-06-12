@@ -1939,6 +1939,7 @@ function renderLesson() {
   elements.theme.innerHTML = lesson.theme;
   renderPicture(lesson);
   elements.word.innerHTML = lesson.word;
+  elements.word.className = lesson.word.length > 9 ? "long-word" : "";
   elements.pronunciation.innerHTML = lesson.pronunciation;
   elements.meaning.innerHTML = lesson.meaning;
   elements.parentCue.innerHTML = lesson.sentence;
@@ -1986,6 +1987,7 @@ function fitLessonToViewport() {
   var availableHeight;
   var shellHeight;
   var basePictureHeight;
+  var fixedContentHeight;
   var targetPictureHeight;
   var maxPictureHeight;
   var minPictureHeight;
@@ -2011,24 +2013,19 @@ function fitLessonToViewport() {
     }
   }
 
-  availableHeight = viewportHeight - shellTop;
+  availableHeight = viewportHeight - shellTop - 12;
   shellHeight = shell.offsetHeight;
   basePictureHeight = elements.picture.offsetHeight;
-  targetPictureHeight = basePictureHeight;
 
   if (!shellHeight || !basePictureHeight || availableHeight <= 0) {
     revealShell();
     return;
   }
 
-  if (shellHeight < availableHeight) {
-    targetPictureHeight += availableHeight - shellHeight;
-  } else if (shellHeight > availableHeight + 4) {
-    targetPictureHeight -= shellHeight - availableHeight + 4;
-  }
-
-  maxPictureHeight = Math.floor(viewportHeight * 0.62);
-  minPictureHeight = viewportHeight < 560 ? 104 : 140;
+  fixedContentHeight = shellHeight - basePictureHeight;
+  targetPictureHeight = availableHeight - fixedContentHeight;
+  maxPictureHeight = Math.floor(viewportHeight * 0.42);
+  minPictureHeight = viewportHeight < 560 ? 64 : 96;
   targetPictureHeight = Math.max(
     minPictureHeight,
     Math.min(maxPictureHeight, targetPictureHeight)
@@ -2040,13 +2037,13 @@ function fitLessonToViewport() {
 
   if (media && viewportWidth) {
     mediaSize = Math.min(
-      targetPictureHeight - 12,
-      Math.floor(viewportWidth * 0.7),
-      260
+      targetPictureHeight - 14,
+      Math.floor(viewportWidth * 0.62),
+      220
     );
-    mediaSize = Math.max(90, mediaSize);
+    mediaSize = Math.max(72, mediaSize);
     media.style.width = mediaSize + "px";
-    media.style.maxHeight = targetPictureHeight - 10 + "px";
+    media.style.maxHeight = targetPictureHeight - 12 + "px";
   }
 
   revealShell();

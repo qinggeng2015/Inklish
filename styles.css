@@ -295,9 +295,9 @@ h1 {
 }
 
 .picture-frame {
-  height: 190px;
-  height: calc(100vh - 426px);
-  min-height: 190px;
+  height: 150px;
+  height: calc(100vh - 478px);
+  min-height: 126px;
   overflow: hidden;
   border-bottom: 3px solid #1f1f1f;
   background: #ded8c8;
@@ -306,7 +306,7 @@ h1 {
 
 .picture-frame svg {
   display: block;
-  width: 224px;
+  width: 182px;
   max-width: 96%;
   max-height: calc(100% - 8px);
   margin: 0 auto;
@@ -315,7 +315,7 @@ h1 {
 
 .generated-word-image {
   display: block;
-  width: 182px;
+  width: 146px;
   max-width: 92%;
   max-height: calc(100% - 8px);
   margin: 4px auto;
@@ -332,39 +332,44 @@ h1 {
 }
 
 .word-block {
-  padding: 10px 14px 8px;
+  padding: 12px 14px 10px;
   text-align: center;
 }
 
 .word-block h2 {
   margin-bottom: 2px;
-  font-size: 86px;
-  line-height: 0.9;
+  font-size: 104px;
+  line-height: 0.86;
   letter-spacing: -0.06em;
 }
 
+.word-block h2.long-word {
+  font-size: 82px;
+  letter-spacing: -0.04em;
+}
+
 .pronunciation {
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   color: #6c665b;
-  font-size: 1.45rem;
+  font-size: 1.7rem;
   font-weight: 700;
 }
 
 .meaning {
   margin-bottom: 0;
-  font-size: 1.7rem;
+  font-size: 2rem;
   font-weight: 900;
 }
 
 .parent-cue {
   display: inline-block;
   max-width: 100%;
-  margin: 8px 0 0;
+  margin: 10px 0 0;
   border: 3px solid #1f1f1f;
   border-radius: 16px;
   padding: 7px 12px;
   background: #faf7ee;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 900;
 }
 
@@ -665,10 +670,10 @@ h1 {
 
   .picture-frame {
     display: grid;
-    height: 190px;
-    height: calc(100vh - 426px);
-    height: calc(100dvh - 426px);
-    min-height: 190px;
+    height: 150px;
+    height: calc(100vh - 478px);
+    height: calc(100dvh - 478px);
+    min-height: 126px;
     place-items: center;
     background:
       linear-gradient(135deg, rgba(17, 17, 17, 0.08) 25%, transparent 25%) 0 0 / 24px 24px,
@@ -676,40 +681,45 @@ h1 {
   }
 
   .picture-frame svg {
-    width: min(72vw, 260px, 54vh);
+    width: min(62vw, 210px, 42vh);
     max-height: calc(100% - 8px);
     padding: clamp(6px, 1.2vh, 10px);
   }
 
   .generated-word-image {
-    width: min(72vw, 250px, 54vh);
+    width: min(62vw, 200px, 42vh);
     max-height: calc(100% - 8px);
     margin: 6px auto;
   }
 
   .word-block {
-    padding: clamp(8px, 1.4vh, 12px) 18px clamp(6px, 1vh, 10px);
+    padding: clamp(10px, 1.8vh, 16px) 18px clamp(8px, 1.4vh, 12px);
   }
 
   .word-block h2 {
-    font-size: clamp(4.7rem, 13.5vh, 6.2rem);
-    line-height: 0.86;
+    font-size: clamp(5.6rem, 16vh, 7.4rem);
+    line-height: 0.84;
     letter-spacing: -0.08em;
   }
 
+  .word-block h2.long-word {
+    font-size: clamp(4.2rem, 11.5vh, 5.8rem);
+    letter-spacing: -0.04em;
+  }
+
   .pronunciation {
-    margin-bottom: clamp(2px, 0.7vh, 4px);
-    font-size: clamp(1.25rem, 3.4vh, 1.75rem);
+    margin-bottom: clamp(3px, 0.8vh, 6px);
+    font-size: clamp(1.45rem, 3.9vh, 2rem);
   }
 
   .meaning {
-    font-size: clamp(1.45rem, 4.2vh, 2rem);
+    font-size: clamp(1.75rem, 4.8vh, 2.35rem);
   }
 
   .parent-cue {
-    margin-top: clamp(6px, 1.1vh, 10px);
+    margin-top: clamp(7px, 1.2vh, 11px);
     padding: clamp(6px, 1vh, 9px) 12px;
-    font-size: clamp(1.05rem, 2.8vh, 1.32rem);
+    font-size: clamp(1.12rem, 3vh, 1.42rem);
   }
 
   .actions {
@@ -775,41 +785,45 @@ h1 {
   }
 
   .picture-frame {
-    height: calc(100vh - 418px);
-    height: calc(100dvh - 418px);
-    min-height: 178px;
+    height: calc(100vh - 480px);
+    height: calc(100dvh - 480px);
+    min-height: 126px;
   }
 
   .picture-frame svg {
-    width: 208px;
-    max-height: 170px;
+    width: 178px;
+    max-height: calc(100% - 8px);
   }
 
   .generated-word-image {
-    width: min(70vw, 170px);
-    max-height: 170px;
+    width: min(62vw, 142px);
+    max-height: calc(100% - 8px);
   }
 
   .word-block {
-    padding: 10px 16px 8px;
+    padding: 12px 16px 10px;
   }
 
   .word-block h2 {
-    font-size: 88px;
+    font-size: 106px;
+  }
+
+  .word-block h2.long-word {
+    font-size: 78px;
   }
 
   .pronunciation {
-    font-size: 1.38rem;
-  }
-
-  .meaning {
     font-size: 1.62rem;
   }
 
+  .meaning {
+    font-size: 1.95rem;
+  }
+
   .parent-cue {
-    margin-top: 8px;
+    margin-top: 9px;
     padding: 7px 12px;
-    font-size: 1rem;
+    font-size: 1.12rem;
   }
 
   .daily-mark {
@@ -849,15 +863,15 @@ h1 {
   }
 
   .picture-frame {
-    height: calc(100vh - 390px);
-    height: calc(100dvh - 390px);
-    min-height: 150px;
+    height: calc(100vh - 456px);
+    height: calc(100dvh - 456px);
+    min-height: 96px;
   }
 
   .generated-word-image {
-    width: min(64vw, 142px);
-    max-height: calc(100% - 10px);
-    margin: 5px auto;
+    width: min(58vw, 118px);
+    max-height: calc(100% - 8px);
+    margin: 4px auto;
   }
 
   .text-button {
@@ -883,7 +897,11 @@ h1 {
   }
 
   .word-block h2 {
-    font-size: 84px;
+    font-size: 98px;
+  }
+
+  .word-block h2.long-word {
+    font-size: 72px;
   }
 
   .parent-cue {
@@ -904,13 +922,13 @@ h1 {
   }
 
   .picture-frame {
-    height: calc(100vh - 366px);
-    height: calc(100dvh - 366px);
-    min-height: 118px;
+    height: calc(100vh - 434px);
+    height: calc(100dvh - 434px);
+    min-height: 76px;
   }
 
   .generated-word-image {
-    width: min(58vw, 110px);
+    width: min(52vw, 92px);
     max-height: calc(100% - 8px);
     margin: 4px auto;
   }
