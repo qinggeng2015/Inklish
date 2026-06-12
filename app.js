@@ -1782,7 +1782,18 @@ function byId(id) {
   return document.getElementById(id);
 }
 
+function firstByClass(className) {
+  if (document.getElementsByClassName) {
+    return document.getElementsByClassName(className)[0];
+  }
+
+  return null;
+}
+
 var elements = {
+  shell: document.getElementsByTagName("main")[0],
+  card: firstByClass("learning-card"),
+  wordBlock: firstByClass("word-block"),
   guide: byId("guide"),
   startButton: byId("start-button"),
   guideButton: byId("guide-button"),
@@ -1978,26 +1989,63 @@ function revealShell() {
   document.body.className = document.body.className.replace(/\bis-fitting\b/g, "").replace(/\s+/g, " ");
 }
 
+function pixelValue(value, fallback) {
+  var parsed = parseFloat(value);
+
+  if (isNaN(parsed)) {
+    return fallback;
+  }
+
+  return parsed;
+}
+
+function elementPixelStyle(element, propertyName, fallback) {
+  var styles;
+
+  if (window.getComputedStyle) {
+    styles = window.getComputedStyle(element, null);
+    return pixelValue(styles[propertyName], fallback);
+  }
+
+  if (element.currentStyle) {
+    return pixelValue(element.currentStyle[propertyName], fallback);
+  }
+
+  return fallback;
+}
+
 function fitLessonToViewport() {
-  var shell = document.getElementsByTagName("main")[0];
+  var shell = elements.shell;
+  var card = elements.card;
   var media = findPictureMedia();
+  var wordBlock = elements.wordBlock;
   var viewportHeight = getViewportHeight();
   var viewportWidth = getViewportWidth();
   var shellTop = 0;
   var availableHeight;
-  var shellHeight;
+  var cardHeight;
   var basePictureHeight;
+  var baseWordPaddingBottom;
+  var baseWordPaddingTop;
+  var extraHeight;
   var fixedContentHeight;
+  var naturalCardHeight;
   var targetPictureHeight;
   var maxPictureHeight;
   var minPictureHeight;
 
-  if (!shell || !viewportHeight || viewportHeight < 360) {
+  if (!shell || !card || !viewportHeight || viewportHeight < 360) {
     revealShell();
     return;
   }
 
+  card.style.minHeight = "";
   elements.picture.style.height = "";
+
+  if (wordBlock) {
+    wordBlock.style.paddingTop = "";
+    wordBlock.style.paddingBottom = "";
+  }
 
   if (media) {
     media.style.width = "";
@@ -2013,22 +2061,23 @@ function fitLessonToViewport() {
     }
   }
 
-  availableHeight = viewportHeight - shellTop - 12;
-  shellHeight = shell.offsetHeight;
+  availableHeight = viewportHeight - shellTop - 8;
+  cardHeight = card.offsetHeight;
   basePictureHeight = elements.picture.offsetHeight;
 
-  if (!shellHeight || !basePictureHeight || availableHeight <= 0) {
+  if (!cardHeight || !basePictureHeight || availableHeight <= 0) {
     revealShell();
     return;
   }
 
-  fixedContentHeight = shellHeight - basePictureHeight;
-  targetPictureHeight = availableHeight - fixedContentHeight;
-  maxPictureHeight = Math.floor(viewportHeight * 0.34);
-  minPictureHeight = viewportHeight < 560 ? 48 : 72;
+  fixedContentHeight = cardHeight - basePictureHeight;
+  maxPictureHeight = Math.floor(viewportHeight * 0.27);
+  minPictureHeight = viewportHeight < 560 ? 56 : 84;
+  targetPictureHeight = Math.min(basePictureHeight, maxPictureHeight);
+  targetPictureHeight = Math.min(targetPictureHeight, availableHeight - fixedContentHeight);
   targetPictureHeight = Math.max(
     minPictureHeight,
-    Math.min(maxPictureHeight, targetPictureHeight)
+    targetPictureHeight
   );
 
   if (Math.abs(targetPictureHeight - basePictureHeight) > 3) {
@@ -2039,6 +2088,17 @@ function fitLessonToViewport() {
     media.style.width = "100%";
     media.style.height = "auto";
     media.style.maxHeight = "none";
+  }
+
+  naturalCardHeight = card.offsetHeight;
+  extraHeight = availableHeight - naturalCardHeight;
+
+  if (wordBlock && extraHeight > 4) {
+    baseWordPaddingTop = elementPixelStyle(wordBlock, "paddingTop", 12);
+    baseWordPaddingBottom = elementPixelStyle(wordBlock, "paddingBottom", 10);
+    card.style.minHeight = availableHeight + "px";
+    wordBlock.style.paddingTop = Math.floor(baseWordPaddingTop + extraHeight * 0.36) + "px";
+    wordBlock.style.paddingBottom = Math.floor(baseWordPaddingBottom + extraHeight * 0.64) + "px";
   }
 
   revealShell();

@@ -295,9 +295,9 @@ h1 {
 }
 
 .picture-frame {
-  height: 108px;
-  height: calc(100vh - 520px);
-  min-height: 72px;
+  height: 116px;
+  height: calc(100vh - 512px);
+  min-height: 84px;
   overflow: hidden;
   border-bottom: 3px solid #1f1f1f;
   background: #ded8c8;
@@ -320,7 +320,7 @@ h1 {
   height: auto;
   max-width: 100%;
   max-height: none;
-  margin: -26% auto 0;
+  margin: -18% auto 0;
 }
 
 .picture-frame path,
@@ -671,10 +671,10 @@ h1 {
 
   .picture-frame {
     display: grid;
-    height: 108px;
-    height: calc(100vh - 520px);
-    height: calc(100dvh - 520px);
-    min-height: 72px;
+    height: 116px;
+    height: calc(100vh - 512px);
+    height: calc(100dvh - 512px);
+    min-height: 84px;
     place-items: center;
     background:
       linear-gradient(135deg, rgba(17, 17, 17, 0.08) 25%, transparent 25%) 0 0 / 24px 24px,
@@ -692,7 +692,7 @@ h1 {
     width: 100%;
     height: auto;
     max-height: none;
-    margin: -26% auto 0;
+    margin: -18% auto 0;
   }
 
   .word-block {
@@ -788,9 +788,9 @@ h1 {
   }
 
   .picture-frame {
-    height: calc(100vh - 520px);
-    height: calc(100dvh - 520px);
-    min-height: 72px;
+    height: calc(100vh - 512px);
+    height: calc(100dvh - 512px);
+    min-height: 84px;
   }
 
   .picture-frame svg {
@@ -868,16 +868,16 @@ h1 {
   }
 
   .picture-frame {
-    height: calc(100vh - 498px);
-    height: calc(100dvh - 498px);
-    min-height: 58px;
+    height: calc(100vh - 490px);
+    height: calc(100dvh - 490px);
+    min-height: 68px;
   }
 
   .generated-word-image {
     width: 100%;
     height: auto;
     max-height: none;
-    margin: -26% auto 0;
+    margin: -18% auto 0;
   }
 
   .text-button {
@@ -928,16 +928,16 @@ h1 {
   }
 
   .picture-frame {
-    height: calc(100vh - 476px);
-    height: calc(100dvh - 476px);
-    min-height: 48px;
+    height: calc(100vh - 468px);
+    height: calc(100dvh - 468px);
+    min-height: 56px;
   }
 
   .generated-word-image {
     width: 100%;
     height: auto;
     max-height: none;
-    margin: -26% auto 0;
+    margin: -18% auto 0;
   }
 
   .card-topline,
